@@ -1,3 +1,45 @@
+
+
+# TrelloFamily
+
+- This will be a step by step Trello Clone.
+- Using angular CDK (nothing from material design)
+- Using Tailwind 
+
+## First Steps
+
+- Run this codes 
+```sh
+ng new trello-family
+cd trello-family
+```
+- Install Tailwind (also see this: https://tailwindcss.com/docs/guides/angular)
+
+```sh
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+- add the CDK from angular (ONLY the CDK nothing from materiel design)
+```sh
+ng add @angular/cdk
+```
+
+
+
+
+
+
+
+
+
+
+
+## All above the standard README generate by angular.
+
+##
+##
+##
+
 # TrelloFamily
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.

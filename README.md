@@ -25,6 +25,18 @@ ng add @angular/cdk
 ```
 
 
+## Login Page
+
+- Add images and svg in /assets
+- Creation the login page (important no styles and no testing)
+```sh
+ng g c pages/login --style=none --skip-tests
+```
+- For Login form install: (see here: https://github.com/tailwindlabs/tailwindcss-forms)
+```sh
+npm install -D @tailwindcss/forms
+```
+- Basic html with non css files. Only in the html
 
 
 

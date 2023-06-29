@@ -39,6 +39,14 @@ npm install -D @tailwindcss/forms
 - Basic html with non css files. Only in the html
 
 
+## button-component
+- Creation the component for button
+```sh
+ng g c component/btn --skip-tests --style=none
+```
+- Take the buttom from login
+- Modify tailwind.config to extends colors to succes and primary
+- To dinamic change color in the btn tailwind cannot read in process time. So create a get color function in btn component and define the colors allowed for this btn.
 
 
 

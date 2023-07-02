@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Dialog } from '@angular/cdk/dialog';
+import { TodoModalComponent } from '../../components/todo-modal/todo-modal.component'
 
 import { Todo, Column } from './../../models/todo.models'
+
 
 @Component({
   selector: 'app-board',
@@ -44,6 +47,14 @@ import { Todo, Column } from './../../models/todo.models'
   ]
 })
 export class BoardComponent {
+
+  // private dialog = Inject(Dialog);
+  // private todoModalComponent = Inject(TodoModalComponent);
+
+  constructor (
+    private dialog: Dialog
+  ) {}
+
 
   columns: Column[] = [
     {
@@ -127,6 +138,10 @@ export class BoardComponent {
     // moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 
+  dropColumn(event: CdkDragDrop<Column[]>) {
+    moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
+  }
+
   addColumn() {
     this.columns.push({
       title: 'new column',
@@ -143,6 +158,13 @@ export class BoardComponent {
     this.columns.push({
       title: 'clon ' + column.title,
       todos: column.todos
+    })
+  }
+
+  openDialog() {
+    this.dialog.open(TodoModalComponent, {
+      minWidth: '250px',
+      maxWidth: '65%'
     })
   }
 }

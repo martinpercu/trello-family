@@ -96,10 +96,21 @@ ng g c pages/board --skip-tests --styles=none
 - Import this model to board.ts.
 - Refactor the todos into the Column model columns
 - In html refactor the ngFor to match the new logic. Is easy to move the card between columns. Using the same method drop(event: CdkDragDrop<Todo[]>)
+- Now adding move column also.
+- In html in overall div ===> cdkDropList + cdkDropListOrientation="horizontal" + (cdkDropListDropped)="dropColumn($event)"
+- in TS creadte method dropColumn($event) similar to drop($event).
+- In html add cdkDrag in the column div.
 
 
 
+## Modal or Dialog
 
+- Adding in module ===> import {DialogModule} from '@angular/cdk/dialog';
+- Creating a new component as a modal
+```sh
+ng g c component/todo-modal --skip-test --style=none
+```
+- 
 
 
 

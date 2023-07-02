@@ -91,6 +91,14 @@ ng g c pages/board --skip-tests --styles=none
 
 
 
+## Dinamic Column Drag and Drop
+- Creation in models a Column Model ==> just a title + an arrays of previous "todos"
+- Import this model to board.ts.
+- Refactor the todos into the Column model columns
+- In html refactor the ngFor to match the new logic. Is easy to move the card between columns. Using the same method drop(event: CdkDragDrop<Todo[]>)
+
+
+
 
 
 

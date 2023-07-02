@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Dialog } from '@angular/cdk/dialog';
 import { TodoModalComponent } from '../../components/todo-modal/todo-modal.component'
@@ -48,12 +48,7 @@ import { Todo, Column } from './../../models/todo.models'
 })
 export class BoardComponent {
 
-  // private dialog = Inject(Dialog);
-  // private todoModalComponent = Inject(TodoModalComponent);
-
-  constructor (
-    private dialog: Dialog
-  ) {}
+  private dialog = inject(Dialog);
 
 
   columns: Column[] = [

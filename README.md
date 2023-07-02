@@ -103,14 +103,20 @@ ng g c pages/board --skip-tests --styles=none
 
 
 
-## Modal or Dialog
+## Dialog or Modal
 
 - Adding in module ===> import {DialogModule} from '@angular/cdk/dialog';
-- Creating a new component as a modal
+- Creating a new component as a todo-modal
 ```sh
 ng g c component/todo-modal --skip-test --style=none
 ```
-- 
+- In board.ts import { Dialog } from '@angular/cdk/dialog';
+- In board.ts import { TodoModalComponent }; (the component created)
+- In todo-modal TS import { DialogRef } from '@angular/cdk/dialog' (to use funtions there as close modal).
+- In todo-modal ts  import all fa awesome needed
+- Check the button component to add and refactor some colors.
+
+ 
 
 
 

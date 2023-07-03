@@ -156,10 +156,16 @@ export class BoardComponent {
     })
   }
 
-  openDialog() {
-    this.dialog.open(TodoModalComponent, {
+  openDialog(task: Todo) {
+    const dialogRef = this.dialog.open(TodoModalComponent, {
       minWidth: '250px',
-      maxWidth: '65%'
+      maxWidth: '65%',
+      data: {
+        todo: task,
+      }
+    });
+    dialogRef.closed.subscribe(output => {
+      console.log(output)
     })
   }
 }

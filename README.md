@@ -129,6 +129,23 @@ ng g c component/todo-modal --skip-test --style=none
 - The most important in board (is where will receive in return the info). In the openDialog method dialogRef.closed.subscribe(output => { console.log(output) }) 
 
 
+## Scroll Virtual Scroll List
+
+- Creation a scroll pagepage (important no styles and no testing)
+```sh
+ng g c pages/scroll --style=none --skip-tests
+```
+- In appModule ===> Import HttpClientModule
+- In scroll.ts ===> Import HttpClient
+- I take a from free api a list of 200 items. 
+- Create in html 2 scrolling places. One for the standard ngFor list the other to implement the virtual scroll.
+- To implement the Virtual Scrolling component:
+- In appModule ==> import { ScrollingModule } from '@angular/cdk/scrolling';
+- In html use the cdk-virtual-scroll-viewport intead of div
+- SUPER IMPORTANT ==> add the itemSize="number" in the cdk-virtual-scroll-viewport (is important to allow make the calculation in order to render a defined quantity of items).
+- Change the *ngFor for a *cdkVirtualFor
+- Now in left Scroll the Virtual scroll is ready. 
+
 
 
 

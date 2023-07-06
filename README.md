@@ -82,7 +82,7 @@ ng g c pages/board --skip-tests --styles=none
 - in app.module ===>  import { DragDropModule } from '@angular/cdk/drag-drop';
 - creation a models of todos
 - in board.ts ===> import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-- in board.ts ===> import { Todo } from './../../models/todo.models'
+- in board.ts ===> import { Todo } from './../../models/todo.model'
 - in board.ts add a list with this model to use in the html
 - in board.html use ===> cdkDropListGroup + cdkDropList + (cdkDropListDropped)="drop($event)" + [cdkDropListData]="todos". 
 - Important ==> Think first in just a list and move the item into this list. Then think in change the item from list. 
@@ -145,6 +145,32 @@ ng g c pages/scroll --style=none --skip-tests
 - SUPER IMPORTANT ==> add the itemSize="number" in the cdk-virtual-scroll-viewport (is important to allow make the calculation in order to render a defined quantity of items).
 - Change the *ngFor for a *cdkVirtualFor
 - Now in left Scroll the Virtual scroll is ready. 
+
+
+
+## Tables
+
+- Creation a page pagepage (important no styles and no testing)
+```sh
+ng g c pages/table --style=none --skip-tests
+```
+- In appModule ===> import {CdkTableModule} from '@angular/cdk/table';
+- Create model for Product. Then export it to scroll and to the new table.ts
+- In table.ts almost the same as scroll ts
+- Important!!! The order of columns is defined in the table.ts<br>
+columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
+- As exemple the Image in the html is first but render as the last one.
+- IMPORTANT!! Is possible to add style in a cell or row with conditions. Example: <br>
+ td> cdk-cell class="px-6 py-4" [ngClass]="{'bg-green-200': row.price < 350}" *cdkCellDef="let row">{{ row.price }}</td  ==> <br>
+ This is to show background in light green if the value is lower than 350. <br>
+ - A footer is possible cdkFooterRowDef.
+
+ 
+
+
+
+
+
 
 
 

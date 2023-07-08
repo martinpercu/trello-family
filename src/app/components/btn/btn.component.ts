@@ -7,12 +7,12 @@ import { Component, Input } from '@angular/core';
 export class BtnComponent {
 
   @Input() typeBtn: 'button' | 'reset' | 'submit' = 'button';
-  @Input() color = 'red'
+  @Input() color = 'lime'
 
   get colors() {
     return {
       'text-white': this.color === 'succes' || this.color === 'primary' || this.color === 'red',
-      'text-gray-700': this.color === 'gray-light',
+      'text-gray-700': this.color === 'gray-light' || this.color === 'lime',
       'bg-success-700': this.color === 'success',
       'hover:bg-success-800': this.color === 'success',
       'ring-success-300': this.color === 'success',
@@ -31,9 +31,9 @@ export class BtnComponent {
       'bg-sky-700': this.color === 'sky',
       'hover:bg-sky-800': this.color === 'sky',
       'ring-sky-300': this.color === 'sky',
-      'bg-lime-700': this.color === 'lime',
-      'hover:bg-lime-800': this.color === 'lime',
-      'ring-lime-300': this.color === 'lime',
+      'bg-lime-500': this.color === 'lime',
+      'hover:bg-lime-600': this.color === 'lime',
+      'ring-lime-100': this.color === 'lime',
       'bg-fuchsia-700': this.color === 'fuchsia',
       'hover:bg-fuchsia-800': this.color === 'fuchsia',
       'ring-fuchsia-300': this.color === 'fuchsia',

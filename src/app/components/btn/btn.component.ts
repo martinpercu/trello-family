@@ -14,7 +14,7 @@ export class BtnComponent {
       'bg-success-700': true,
       'hover:bg-success-800': true,
       'ring-success-300': true,
-      'text-gray-800': true
+      'text-white': true
     },
     primary: {
       'bg-primary-600': true,

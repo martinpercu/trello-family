@@ -192,7 +192,9 @@ columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
 - In table.ts  ==> input = new FormControl('', { nonNullable: true}); (very important nonNullable).
 - In table.ts in the ngOnInit ==> subcribe to valueChanges getting in the input
 - Add in valueChanges a pipe with debounceTime to wait a little bit before start to search the inputs. (Otherwise on each character typed is making a search).
-- In data-source.ts add ==> find(query: string)
+- In data-source.ts add ==> find(query: string) ==> only for title
+- In data-source.ts add ==> findEverything(query: string) ==> for search id, title or price. 
+- In table.ts in the ngOnInit use find() or findEverything() as you like.
 - Important!! Add logic for each new search using an "dataOriginal" (added in the data-source.ts). In the init() we say this.dataOriginal = products. 
 
 

@@ -38,7 +38,8 @@ export class TableComponent {
     )
     .subscribe(value => {
       console.log(value);
-      this.dataSource.find(value)
+      // this.dataSource.find(value)
+      this.dataSource.findEverywhere(value)
     })
   }
 

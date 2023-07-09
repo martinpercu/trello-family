@@ -43,5 +43,14 @@ export class DataSourceProducts extends DataSource<Product>{
     this.data.next(newProducts);
   }
 
+  findEverywhere(query: string) {
+    const newProducts = this.dataOriginal
+    .filter(item => {
+      const characters = `${item.id}-${item.title}-${item.price}`;
+      return characters.toLowerCase().includes(query.toLowerCase())
+    });
+    this.data.next(newProducts);
+  }
+
   disconnect() { }
 }

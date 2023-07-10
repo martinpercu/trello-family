@@ -10,26 +10,26 @@ import { TableComponent } from './pages/table/table.component';
 
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'boards',
-    component: BoardsComponent
-  },
-  {
-    path: 'board',
-    component: BoardComponent
-  },
-  {
-    path: 'scroll',
-    component: ScrollComponent
-  },
-  {
-    path: 'table',
-    component: TableComponent
-  },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
+  // {
+  //   path: 'boards',
+  //   component: BoardsComponent
+  // },
+  // {
+  //   path: 'board',
+  //   component: BoardComponent
+  // },
+  // {
+  //   path: 'scroll',
+  //   component: ScrollComponent
+  // },
+  // {
+  //   path: 'table',
+  //   component: TableComponent
+  // },
   {
     path: '',
     loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),

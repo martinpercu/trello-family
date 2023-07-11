@@ -14,14 +14,14 @@ const routes: Routes = [
   //   path: 'login',
   //   component: LoginComponent
   // },
-  // {
-  //   path: 'boards',
-  //   component: BoardsComponent
-  // },
-  // {
-  //   path: 'board',
-  //   component: BoardComponent
-  // },
+  {
+    path: 'boards',
+    component: BoardsComponent
+  },
+  {
+    path: 'board',
+    component: BoardComponent
+  },
   // {
   //   path: 'scroll',
   //   component: ScrollComponent

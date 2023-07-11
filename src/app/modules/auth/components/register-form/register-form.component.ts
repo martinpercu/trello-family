@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { CustomValidators } from './../../../../utils/validators';
+import { CustomValidators } from '@utils/validators';
 
 @Component({
   selector: 'app-register-form',

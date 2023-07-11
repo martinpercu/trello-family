@@ -243,6 +243,11 @@ ng g c modules/shared/components/button --style=none --skip-tests
 - Add Routes in Childs in app-routing-module
 
 
+## Authentication setup html ts
+- In all modules html create a body with connectors
+- Add a path in tsconfig for easier imports with @.
+
+
 
 
 

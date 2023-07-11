@@ -1,15 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
-import {
-  faClose,
-  faCheckToSlot,
-  faBars,
-  faUser,
-  faTag,
-  faCheckSquare,
-  faClock,
-} from '@fortawesome/free-solid-svg-icons';
-import { Todo } from '../../../../models/todo.model';
+import { faClose, faCheckToSlot, faBars, faUser, faTag,
+  faCheckSquare, faClock, } from '@fortawesome/free-solid-svg-icons';
+
+import { Todo } from '@models/todo.model';
 
 interface InputData {
   todo: Todo;

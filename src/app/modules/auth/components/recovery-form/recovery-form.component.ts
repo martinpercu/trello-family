@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { CustomValidators } from '../../../../utils/validators';
+import { CustomValidators } from '@utils/validators';
 
 @Component({
   selector: 'app-recovery-form',

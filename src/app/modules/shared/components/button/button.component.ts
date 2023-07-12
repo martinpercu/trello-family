@@ -27,9 +27,9 @@ export class ButtonComponent {
       'text-white': true,
     },
     danger: {
-      'bg-danger-700': true,
-      'hover:bg-danger-800': true,
-      'focus:ring-danger-300': true,
+      'bg-red-500': true,
+      'hover:bg-red-600': true,
+      'focus:ring-red-100': true,
       'text-white': true,
     },
     light: {

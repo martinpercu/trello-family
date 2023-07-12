@@ -42,11 +42,43 @@ npm install -D @tailwindcss/forms
 ## button-component
 - Creation the component for button
 ```sh
-ng g c component/btn --skip-tests --style=none
+ng g c components/btn --skip-tests --style=none
 ```
 - Take the buttom from login
 - Modify tailwind.config to extends colors to succes and primary
 - To dinamic change color in the btn tailwind cannot read in process time. So create a get color function in btn component and define the colors allowed for this btn.
+
+## Interactive component
+- 
+- Creation the pages component for boards page
+```sh
+ng g c pages/boards --skip-tests --style=none
+```
+- Creation a navbar
+- Creation the component for navbar
+```sh
+ng g c components/nav --skip-tests --style=none
+```
+- Login in app modules and app-routing to include nav component + boards page
+- add ===> @import '@angular/cdk/overlay-prebuilt.css'; in the styles.scss
+- in app.module add ===> import { OverlayModule } from '@angular/cdk/overlay'
+- Add the fontawesonm library
+```sh
+ng add @fortawesome/angular-fontawesome
+```
+- Important to config tailwind "container" ...  in tailwindcss.config 
+- Import Accordion of CDK in app.module ===> import { CdkAccordionModule } from '@angular/cdk/accordion';
+- Implement accordion in the boards html + accordion witdh array double deep
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,7 +16,7 @@ export class ButtonComponent {
   mapColors = {
     success: {
       'bg-success-700': true,
-      'hover:bg-success-800': true,
+      'hover:bg-success-500': true,
       'focus:ring-success-300': true,
       'text-white': true,
     },
@@ -33,10 +33,10 @@ export class ButtonComponent {
       'text-white': true,
     },
     light: {
-      'bg-gray-200': true,
-      'hover:bg-gray-500': true,
-      'focus:ring-gray-50': true,
-      'text-gray-700': true,
+      'bg-primary-400': true,
+      'hover:bg-primary-300': true,
+      'focus:ring-primary-50': true,
+      'text-white': true,
     },
     sky: {
       'bg-sky-700': true,

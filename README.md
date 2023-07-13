@@ -6,8 +6,8 @@
 - Using angular CDK (nothing from material design)
 - Using Tailwind 
 
-## First Steps
 
+## First Steps
 - Run this codes 
 ```sh
 ng new trello-family
@@ -25,8 +25,8 @@ ng add @angular/cdk
 ```
 
 
-## Login Page
 
+## Login Page
 - Add images and svg in /assets
 - Creation the login page (important no styles and no testing)
 ```sh
@@ -39,6 +39,7 @@ npm install -D @tailwindcss/forms
 - Basic html with non css files. Only in the html
 
 
+
 ## button-component
 - Creation the component for button
 ```sh
@@ -48,8 +49,9 @@ ng g c components/btn --skip-tests --style=none
 - Modify tailwind.config to extends colors to succes and primary
 - To dinamic change color in the btn tailwind cannot read in process time. So create a get color function in btn component and define the colors allowed for this btn.
 
+
+
 ## Interactive component
-- 
 - Creation the pages component for boards page
 ```sh
 ng g c pages/boards --skip-tests --style=none
@@ -69,6 +71,27 @@ ng add @fortawesome/angular-fontawesome
 - Important to config tailwind "container" ...  in tailwindcss.config 
 - Import Accordion of CDK in app.module ===> import { CdkAccordionModule } from '@angular/cdk/accordion';
 - Implement accordion in the boards html + accordion witdh array double deep
+
+
+
+## Drag and Drop
+- Creation new page board
+```sh
+ng g c pages/board --skip-tests --styles=none
+```
+- in app.module ===>  import { DragDropModule } from '@angular/cdk/drag-drop';
+- creation a models of todos
+- in board.ts ===> import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+- in board.ts ===> import { Todo } from './../../models/todo.models'
+- in board.ts add a list with this model to use in the html
+- in board.html use ===> cdkDropListGroup + cdkDropList + (cdkDropListDropped)="drop($event)" + [cdkDropListData]="todos". 
+- Important ==> Think first in just a list and move the item into this list. Then think in change the item from list. 
+- So first (only in the same list) use ===> cdkDropList + (cdkDropListDropped)="drop($event)"
+- Then (for move from list to list) use ===> cdkDropListGroup + [cdkDropListData]="todos"
+
+
+
+
 
 
 

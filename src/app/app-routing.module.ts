@@ -7,6 +7,9 @@ import { BoardComponent } from './pages/board/board.component';
 import { ScrollComponent } from './pages/scroll/scroll.component';
 import { TableComponent } from './pages/table/table.component';
 
+import { AuthGuard } from '@guards/auth.guard';
+
+
 
 
 const routes: Routes = [
@@ -36,6 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'app',
+    canActivate: [ AuthGuard ],
     loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
   },
 ];

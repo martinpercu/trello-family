@@ -277,11 +277,19 @@ ng g s services/auth --skip-tests
 
 
 ## Register + Login 
-- Implement all in one... make register and directly log the new user.
+- Implement all in one... make the register and directly log the new user.
 - In auth.service create the method registerAndLogin ===> register() + login() with a switchMap -- avoiding callback hell ;) --
-- In register-form.component in the register() change the authService.register() for the new method registerAndLogin() (I left commented the old line to see the change)
+- In register-form.component in the register() change the authService.register() for the new method authService.registerAndLogin() (I left commented the old line to see the change)
 - Also change the navigate ===> /login to /app/boards  (I left commented the old line to see the change)
 
+## Recovery password
+- The API has a recovery and a change password POST.
+- In auth.servie a method recovery().
+- In auth.servie a method changePassword().
+- In forgot-password-form apply logic from a authService.
+- When we send an email knowed in the DB the api return a token to insert in the recovery page. (Usully the server will send an email with the link with this token in the as a param).
+- In recovery-form IMPORTANT ! Import ActivatedRoute from angular/router. We need it to read the queryparam==> the token previously received.
+- In recovery-form in method recovery() add logic to change the password using the token get + the new password.
 
 
 

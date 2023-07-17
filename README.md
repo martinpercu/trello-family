@@ -116,7 +116,17 @@ ng g c component/todo-modal --skip-test --style=none
 - In todo-modal ts  import all fa awesome needed
 - Check the button component to add and refactor some colors.
 
- 
+## Dialog or Modal - Info data
+
+- Sending info/data to Modal 
+- To send: In board send the task in the openDialog(task) 
+- To receive the task: In todo-modal.component import todo.model create interface Data with todo: Todo + in constructor ==> @Inject(DIALOG_DATA) data: Data... etc etc etc
+- In todo-modal.html {{ todo.title }}. Already get the data.
+- To return some information: in todo-modal interface OutputData { rta: boolean; }
+- Also ===>  private dialogRef = inject(DialogRef<OutputData>);
+- In todo-modal .closeWithRta(rta: boolean) {this.dialogRef.close({ rta });}
+- In html button closeWithRta(true/false) 
+- The most important in board (is where will receive in return the info). In the openDialog method dialogRef.closed.subscribe(output => { console.log(output) }) 
 
 
 

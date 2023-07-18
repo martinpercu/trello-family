@@ -311,6 +311,14 @@ ng g g guards/auth --skip-tests
 - In the new auth.guard import TokenService + Router. Then ...
 - Implement the logic to check if there is a token to allow or not.
 - NOW in app-routing.module import the AuthGuard and add canActivate in the path to the 'app'. Now only if the token OK we have access to the app area (boards, profile and users).
+- IMPORTANT!!! Since Angular 15 we can use canActivate as a function directly in the app-routing.
+- In app-routing import TokenService and the "inject" from angular/core
+- In token.service create a method to return true or false if find the token. ===> checkToken().
+- In app-routing replace the "AuthGuard" with the function checkToken().
+-     canActivate: [() => inject(TokenService).checkToken()]
+- So you no need the AuthGuard anymore... 
+- I left the guard it in the project and commented old lines to see an exemple for migration from Angular 14 to 15 and above. 
+
 
 
 

@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
+
+  private router = inject(Router);
 
   constructor() { }
 
@@ -14,6 +18,15 @@ export class TokenService {
   getToken() {
     const token = localStorage.getItem('token');
     return token;
+  }
+
+  checkToken() {
+    const token = localStorage.getItem('token');
+    if(!token) {
+      this.router.navigate(['/login']);
+      return false
+    }
+    return true;
   }
 
   removeToken() {

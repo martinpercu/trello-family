@@ -3,7 +3,7 @@ import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 
 import { faClose, faCheckToSlot, faBars, faTag, faCheckSquare, faClock, faUser } from '@fortawesome/free-solid-svg-icons'
 
-import { Todo } from 'src/app/models/todo.models'
+import { Todo } from 'src/app/models/todo.model'
 
 
 interface InputData {

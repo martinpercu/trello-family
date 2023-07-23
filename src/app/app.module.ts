@@ -6,6 +6,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogModule } from '@angular/cdk/dialog';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BoardComponent } from './pages/board/board.component';
 import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 import { ScrollComponent } from './pages/scroll/scroll.component';
+import { TableComponent } from './pages/table/table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
     NavComponent,
     BoardComponent,
     TodoModalComponent,
-    ScrollComponent
+    ScrollComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
     FontAwesomeModule,
     DialogModule,
     HttpClientModule,
-    ScrollingModule
+    ScrollingModule,
+    CdkTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

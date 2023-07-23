@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Dialog } from '@angular/cdk/dialog';
 import { TodoModalComponent } from '../../components/todo-modal/todo-modal.component'
 
-import { Todo, Column } from './../../models/todo.models'
+import { Todo, Column } from '../../models/todo.model'
 
 
 @Component({

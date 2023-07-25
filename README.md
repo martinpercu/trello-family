@@ -102,6 +102,7 @@ ng g c pages/board --skip-tests --styles=none
 - In html add cdkDrag in the column div.
 
 
+# Modals
 
 ## Dialog or Modal
 
@@ -129,6 +130,8 @@ ng g c component/todo-modal --skip-test --style=none
 - The most important in board (is where will receive in return the info). In the openDialog method dialogRef.closed.subscribe(output => { console.log(output) }) 
 
 
+# Scroll
+
 ## Scroll Virtual Scroll List
 
 - Creation a scroll pagepage (important no styles and no testing)
@@ -148,7 +151,9 @@ ng g c pages/scroll --style=none --skip-tests
 
 
 
-## Tables
+# Tables
+
+## Tables and style for table
 
 - Creation a page pagepage (important no styles and no testing)
 ```sh
@@ -166,6 +171,19 @@ columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
  - A footer is possible cdkFooterRowDef.
 
  
+ ## DataSource (as observable) to table
+
+- Refactor of the table in last branch using DataSource.
+- I left commented lines to make easy to see the difference between last commit. 
+- New file in table==> data-source.ts
+- in data-source.ts  ==> import {CollectionViewer, DataSource} from '@angular/cdk/collections'
+- In data-soruce.ts ==> export class DataSourceProducts extends DataSource<Product>
+- In table.ts import Datasource from data-source. 
+- Now the dinamic actions. ==> add a new column name action. Creation button update and also a method "update()" tu update the product in render. 
+- in data-set.ts also a method "update()" and here make the changes
+- IMPORTANT! findIndex not find anything return "-1". See that in update() in data-source.ts.
+
+
 
 
 

@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Product } from '../../models/product.model';
+import { DataSourceProducts } from './data-source';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { Product } from '../../models/product.model';
 export class TableComponent {
 
   products: Product[] = [];
-  columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];
+  dataSource = new DataSourceProducts();
+  columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover', 'actions'];
   total = 0;
 
   private http = inject(HttpClient);
@@ -19,11 +21,24 @@ export class TableComponent {
   ngOnInit(): void {
     this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products')
     .subscribe(data => {
-      this.products = data;
-      this.total = this.products
-        .map(item => item.price)
-        .reduce((price, total) => price + total, 0);
+      // this.products = data;
+      this.dataSource.init(data);
+      // this.total = this.products
+      //   .map(item => item.price)
+      //   .reduce((price, total) => price + total, 0);
+      this.total = this.dataSource.getTotal();
     })
+  }
+
+  update(product: Product) {
+    if (product.price > 120) {
+      let newPrice = product.price - 120;
+      this.dataSource.update(product.id, { price: newPrice })
+    }
+    else {
+      let newPrice = 620;;
+      this.dataSource.update(product.id, { price: newPrice })
+    }
   }
 
 }

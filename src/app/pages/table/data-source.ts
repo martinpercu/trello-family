@@ -7,12 +7,14 @@ import { BehaviorSubject, Observable } from 'rxjs'
 export class DataSourceProducts extends DataSource<Product>{
 
   data = new BehaviorSubject<Product[]>([]);
+  dataOriginal: Product[] = []
 
   connect(): Observable<Product[]> {
     return this.data;
   }
 
   init(products: Product[]) {
+    this.dataOriginal = products
     this.data.next(products);
   }
 
@@ -33,6 +35,21 @@ export class DataSourceProducts extends DataSource<Product>{
       }
       this.data.next(products);
     }
+  }
+
+  find(query: string) {
+    // const products = this.data.getValue();
+    const newProducts = this.dataOriginal.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+    this.data.next(newProducts);
+  }
+
+  findEverywhere(query: string) {
+    const newProducts = this.dataOriginal
+    .filter(item => {
+      const characters = `${item.id}-${item.title}-${item.price}`;
+      return characters.toLowerCase().includes(query.toLowerCase())
+    });
+    this.data.next(newProducts);
   }
 
   disconnect() { }

@@ -198,8 +198,13 @@ columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
 - Important!! Add logic for each new search using an "dataOriginal" (added in the data-source.ts). In the init() we say this.dataOriginal = products. 
 
 
+## Improvement button + overlays
 
-
+- In Nav add (overlayOutsideClick)="isOpen = !isOpen" ===> really easy. Now when click outside the overlay will be closed.
+- Button html minor change in class. 
+- In todo-modal html add the class in each button
+- In btn.component.ts refactor colors and text with mapColors
+- Fix old issues ! ! ! !
 
 
 

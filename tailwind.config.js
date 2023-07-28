@@ -14,6 +14,7 @@ module.exports = {
         sky: colors.sky,
         fuchsia: colors.fuchsia,
         teal: colors.teal,
+        // light: colors.zinc,
         'danger': '#e11d48',
       },
       container: {

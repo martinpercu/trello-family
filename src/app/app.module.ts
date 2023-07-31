@@ -22,6 +22,8 @@ import { TodoModalComponent } from './components/todo-modal/todo-modal.component
 import { ScrollComponent } from './pages/scroll/scroll.component';
 import { TableComponent } from './pages/table/table.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

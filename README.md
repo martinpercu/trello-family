@@ -105,7 +105,6 @@ ng g c pages/board --skip-tests --styles=none
 # Modals
 
 ## Dialog or Modal
-
 - Adding in module ===> import {DialogModule} from '@angular/cdk/dialog';
 - Creating a new component as a todo-modal
 ```sh
@@ -118,7 +117,6 @@ ng g c component/todo-modal --skip-test --style=none
 - Check the button component to add and refactor some colors.
 
 ## Dialog or Modal - Info data
-
 - Sending info/data to Modal 
 - To send: In board send the task in the openDialog(task) 
 - To receive the task: In todo-modal.component import todo.model create interface Data with todo: Todo + in constructor ==> @Inject(DIALOG_DATA) data: Data... etc etc etc
@@ -133,7 +131,6 @@ ng g c component/todo-modal --skip-test --style=none
 # Scroll
 
 ## Scroll Virtual Scroll List
-
 - Creation a scroll pagepage (important no styles and no testing)
 ```sh
 ng g c pages/scroll --style=none --skip-tests
@@ -150,11 +147,9 @@ ng g c pages/scroll --style=none --skip-tests
 - Now in left Scroll the Virtual scroll is ready. 
 
 
-
 # Tables
 
 ## Tables and style for table
-
 - Creation a page pagepage (important no styles and no testing)
 ```sh
 ng g c pages/table --style=none --skip-tests
@@ -172,7 +167,6 @@ columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
 
  
  ## DataSource (as observable) to table
-
 - Refactor of the table in last branch using DataSource.
 - I left commented lines to make easy to see the difference between last commit. 
 - New file in table==> data-source.ts
@@ -185,7 +179,6 @@ columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
 
 
 ## Filters & Debounce in table
-
 - Add input in html.
 - In app module import the ReactiveFormsModule. 
 - In table.ts import the FormControl. 
@@ -199,12 +192,55 @@ columns: string[] = ['id/ID', 'Name/title', 'Price', 'ImageOrCover'];<br>
 
 
 ## Improvement button + overlays
-
 - In Nav add (overlayOutsideClick)="isOpen = !isOpen" ===> really easy. Now when click outside the overlay will be closed.
 - Button html minor change in class. 
 - In todo-modal html add the class in each button
 - In btn.component.ts refactor colors and text with mapColors
 - Fix old issues ! ! ! !
+
+
+# Authentication
+
+## Authentication setup 
+- Re order files routing and modules
+- This will be the structure to continue. 
+```sh
+ng g m modules/users --routing
+ng g c modules/users/pages/users-table --style=none --skip-tests
+
+ng g m modules/profile --routing
+ng g c modules/profile/pages/profile --style=none --skip-tests
+
+ng g m modules/auth --routing
+ng g c modules/auth/components/background --style=none --skip-tests
+ng g c modules/auth/components/footer --style=none --skip-tests
+ng g c modules/auth/components/forgot-password-form --style=none --skip-tests
+ng g c modules/auth/components/header --style=none --skip-tests
+ng g c modules/auth/components/login-form --style=none --skip-tests
+ng g c modules/auth/components/recovery-form --style=none --skip-tests
+ng g c modules/auth/components/register-form --style=none --skip-tests
+
+ng g c modules/auth/pages/forgot-password --style=none --skip-tests
+ng g c modules/auth/pages/login --style=none --skip-tests
+ng g c modules/auth/pages/recovery --style=none --skip-tests
+ng g c modules/auth/pages/register --style=none --skip-tests
+
+ng g m modules/boards --routing
+ng g c modules/boards/pages/board --style=none --skip-tests
+ng g c modules/boards/pages/boards --style=none --skip-tests
+ng g c modules/boards/components/todo-dialog --style=none --skip-tests
+
+ng g m modules/layout --routing
+ng g c modules/layout/components/layout --style=none --skip-tests
+ng g c modules/layout/components/navbar --style=none --skip-tests
+
+ng g m modules/shared
+ng g c modules/shared/components/button --style=none --skip-tests
+```
+- Connect all imports for routing.
+- Util folders + validators.ts
+- Add Routes '' and 'app' in app-routing-module
+- Add Routes in Childs in app-routing-module
 
 
 

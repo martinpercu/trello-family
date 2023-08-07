@@ -291,6 +291,9 @@ ng g s services/auth --skip-tests
 - In recovery-form IMPORTANT ! Import ActivatedRoute from angular/router. We need it to read the queryparam==> the token previously received.
 - In recovery-form in method recovery() add logic to change the password using the token get + the new password.
 
+
+# Token and manage session
+
 ## Protect Route if not logged (manage session)
 - The session token is what we use to manage the session so create a service to manage this token.
 ```sh

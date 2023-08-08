@@ -339,6 +339,18 @@ npm i typescript-cookie
 - In navbar.component.ts create a logout() using authservice and Router. Once cookie delete navigate to /login.
 - In navbar.component.html add the (click) action.
 
+## Getting all Users
+- Create service to get all users ===>
+```sh
+ng g s services/users --skip-tests
+```
+- In the new users.service implement logic to get the users
+- In modules/users/pages/user-table import the UserService
+- Create a User model!!!!!
+- In user.service the get will use <User[]>!!!
+- In data-source.ts replace the any[] for the new User[].
+- In user.service add the headers: ==> authorization: Bearer + token. (to get the tokes user tokenService + getToken())
+
 
 
 

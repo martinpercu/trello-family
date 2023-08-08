@@ -1,5 +1,8 @@
 <h1 class="text-center font-bold py-2 text-gray-700">Log in to Trello</h1>
-<form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin()">
+<app-btn *ngIf="status === 'failed'" color="danger" class="pb-3">
+  Il n'y a pas de compte pour cet e-mail.
+</app-btn>
+<form [formGroup]="form" novalidate class="space-y-4 pt-2" (ngSubmit)="doLogin()">
   <div>
     <div class="relative">
       <input
@@ -18,13 +21,13 @@
         *ngIf="form.controls.email.hasError('required')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field is mandatory
+        Ce champ est obligatoire
       </p>
       <p
         *ngIf="form.controls.email.hasError('email')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field should be a email
+        Ce champ est un email ???
       </p>
     </div>
   </div>
@@ -45,22 +48,22 @@
         *ngIf="form.controls.password.hasError('required')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field is mandatory
+      Ce champ est obligatoire
       </p>
       <p
         *ngIf="form.controls.password.hasError('minlength')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field should be greater than 6 characters
+        Au moins 6 characters pour le mot de passe ! !
       </p>
     </div>
   </div>
   <div>
-    <!-- <app-btn
+    <app-btn
       typeBtn="submit"
       color="success"
       [loading]="status === 'loading'"
       >Login</app-btn
-    > -->
+    >
   </div>
 </form>

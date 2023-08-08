@@ -245,7 +245,20 @@ ng g c modules/shared/components/button --style=none --skip-tests
 
 ## Authentication setup html ts
 - In all modules html create a body with connectors
-- Add a path in tsconfig for easier imports with @.
+- Add a path in tsconfig for easier imports with @. (personal shortscuts)
+
+
+## Login flow
+- Add in the environments the api URL (this is hidden in gitignore). 
+- Creation login service
+```sh
+ng g s services/auth --skip-tests 
+```
+- In auth.service import HttpClient
+- In auth.service import Environments vars ==> the API url (remember hidden)
+- In auth.service create method login()
+- In login-form implement the logic to log the user
+
 
 
 

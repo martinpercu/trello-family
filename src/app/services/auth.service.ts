@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 import { environment } from '@environments/environment'
-import { switchMap, tap } from 'rxjs';
+import { BehaviorSubject, switchMap, tap } from 'rxjs';
 
 import { TokenService } from '@services/token.service';
 import { ResponseLogin } from '@models/auth.model';
@@ -17,10 +17,15 @@ import { User } from '@models/user.model';
 export class AuthService {
 
   apiUrl = environment.API_URL;
+  user$ = new BehaviorSubject<User | null>(null);
 
   private http = inject(HttpClient);
   private tokenService = inject(TokenService);
   // constructor() { }
+
+  getDataUser() {
+    return this.user$.getValue();
+  }
 
   login(email: string, password: string) {
     return this.http.post<ResponseLogin>(`${this.apiUrl}/api/v1/auth/login`, {
@@ -74,7 +79,12 @@ export class AuthService {
       headers: {
         authorization: `Bearer ${token}`
       }
-    });
+    })
+    .pipe(
+      tap(user => {
+        this.user$.next(user)
+      })
+    );
   }
 
   logout() {

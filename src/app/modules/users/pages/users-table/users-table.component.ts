@@ -5,6 +5,9 @@ import { UsersService } from '@services/users.service';
 
 import { User } from '@models/user.model';
 
+import { AuthService } from '@services/auth.service';
+
+
 
 @Component({
   selector: 'app-users-table',
@@ -13,9 +16,12 @@ import { User } from '@models/user.model';
 export class UsersTableComponent implements OnInit {
 
   private usersService = inject(UsersService);
+  private authService = inject(AuthService);
 
   dataSource = new DataSourceUser();
   columns: string[] = ['id', 'avatar', 'name', 'email'];
+
+  user: User | null = null
 
   constructor() {
     // this.dataSource.init([
@@ -43,11 +49,13 @@ export class UsersTableComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUsers()
     .subscribe(users => {
-      this.dataSource.init(users)
-    })
+      this.dataSource.init(users);
+    });
+    this.authService.user$
+    .subscribe(user => {
+      this.user = user;
+    });
   }
-
-
 
 
 }

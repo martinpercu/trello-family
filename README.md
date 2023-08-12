@@ -260,6 +260,11 @@ ng g s services/auth --skip-tests
 - In login-form implement the logic to log the user
 
 
+## Register
+- In auth.service create method register()
+- In register-form implement the logic to create the new user
+
+
 
 
 

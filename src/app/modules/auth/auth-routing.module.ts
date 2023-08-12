@@ -15,22 +15,22 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    title: 'Login'
+    title: 'Frello Login'
   },
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
-    title: 'Forgot Password'
+    title: 'Frello Forgot Password'
   },
   {
     path: 'register',
     component: RegisterComponent,
-    title: 'Register'
+    title: 'Frello Register'
   },
   {
     path: 'recovery',
     component: RecoveryComponent,
-    title: 'Recovery'
+    title: 'Frello Recovery'
   }
 ];
 

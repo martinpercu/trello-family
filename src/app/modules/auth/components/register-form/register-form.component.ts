@@ -19,6 +19,10 @@ export class RegisterFormComponent {
   private router = inject(Router);
   private authService = inject(AuthService);
 
+  formAvailableEmail = this.formBuilder.nonNullable.group({
+    email: ['', [Validators.email, Validators.required]],
+  })
+
   form = this.formBuilder.nonNullable.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.email, Validators.required]],
@@ -27,10 +31,12 @@ export class RegisterFormComponent {
   }, {
     validators: [ CustomValidators.MatchValidator('password', 'confirmPassword') ]
   });
-  status: string = 'init';
+  status: RequestStatus = 'init';
+  statusAvailableEmail: RequestStatus = 'init';
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   showPassword = false;
+  showRegister = false;
 
   // constructor(
   //   private formBuilder: FormBuilder,
@@ -55,6 +61,33 @@ export class RegisterFormComponent {
       })
     } else {
       this.form.markAllAsTouched();
+    }
+  }
+
+  validateUserEmail() {
+    if(this.formAvailableEmail.valid) {
+      this.statusAvailableEmail = 'loading';
+      const { email } = this.formAvailableEmail.getRawValue();
+      this.authService.isAvailable(email)
+      .subscribe({
+        next: (rta) => {
+          console.log('in-validate-email');
+          this.statusAvailableEmail = 'success';
+          if (rta.isAvailable) {
+            this.form.controls.email.setValue(email);
+            this.showRegister = true
+          } else {
+            this.router.navigate(['/login'], {
+              queryParams: { email }
+            })
+          }
+        },
+        error: () => {
+          this.statusAvailableEmail = 'failed';
+        }
+      })
+    } else {
+      this.formAvailableEmail.markAllAsTouched();
     }
   }
 }

@@ -265,7 +265,15 @@ ng g s services/auth --skip-tests
 - In register-form implement the logic to create the new user
 
 
-
+## Email validation 
+- The api has a validation email to know if the user already exist!!!. 
+- In auth.service create method isAvailable()
+- In register-form implement the logic to check email availability. New form formAvailableEmail + method validateUserEmail() with the logic.
+- In register-form html first check the email. Then if email already in DB redirect to Login if the email is not in DB continuer to register new user.
+- Create a boolean value "showRegister" ==> then use in the html for show only one of the 2 forms.
+- Prefill the email into login. In navigate add ==> queryParams: { email }
+- In login-form .. import ==> ActivetedRoute
+- In login-form add logic to get the params. Then ==> this.form.controls.email.setValue(email);
 
 
 

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '@services/auth.service';
@@ -16,6 +16,8 @@ export class LoginFormComponent {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService);
+  // private activatedRoute = inject(ActivatedRoute);
+
 
 
   form = this.formBuilder.nonNullable.group({
@@ -28,10 +30,16 @@ export class LoginFormComponent {
   showPassword = false;
   status: RequestStatus = 'init';
 
-  // constructor(
-  //   private formBuilder: FormBuilder,
-  //   private router: Router
-  // ) { }
+  constructor( private activatedRoute: ActivatedRoute )
+  {
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      const email = params.get('email');
+      if (email) {
+        this.form.controls.email.setValue(email);
+      }
+    })
+  }
+
 
   doLogin() {
     if (this.form.valid) {

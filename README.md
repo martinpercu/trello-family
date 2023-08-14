@@ -399,6 +399,24 @@ ng g interceptor interceptors/token --skip-tests
 
 
 
+## Close Session decoding Token
+- The token has info about their own expiration. So we will decode it in order to know if is valid or no. (we will not ask to the backend to avoid the typical return 401).
+- Install the jwt decode (this it the decoder we will use)
+```sh
+npm i jwt-decode
+```
+- In token.service import the jwt-decode ===> import jwt_decode, { JwtPayload } from 'jwt-decode';
+- Create a method to know if is valid the token ==> isValidToken.
+- Now in checkToken() use the isValidToken(). (I commented the old checkToken and write a new one to see the changes clear).
+- Now in checkTokenRedirect() use the isValidToken(). (I commented the old checkTokenRedirect and write a new one to see the changes clear).
+- In navbar.component ... create a button to check if the token is valid right now. (just to show in console)
+- In navbar import { TokenService } from '@services/token.service';
+- A method getIfIsValidToken() with console.log(this.tokenService.isValidToken());
+- In the html add a button to use this method.
+- Important (the token has a durability of 5 hours). So to check this faster hardcode time in the method isValidToken in the token.service. 
+- To check if token still valid once we are in the app add the same "canActivate: [() => inject(TokenService).checkToken()]," as we have in the app-routing.module in the layout-routing.module. Add in the path you think convenient.
+
+
 
 
 

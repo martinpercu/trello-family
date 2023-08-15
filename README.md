@@ -417,12 +417,40 @@ npm i jwt-decode
 - To check if token still valid once we are in the app add the same "canActivate: [() => inject(TokenService).checkToken()]," as we have in the app-routing.module in the layout-routing.module. Add in the path you think convenient.
 
 
+## Refresh Token
+- The Refresh Token is what we will use to keep the session active. The token expires (5 hours). 
+- When login the API return 2 tokens: access_token and refresh_token.
+- We will user the refresh token to get a new tokens expiring 5 hours. And each time we needed we will.
+- In auth.service in login() add this.tokenService.saveRefreshToken(response.access_token) to save the refresh token also.
+- In token.service duplicate the token methods but now for the refresh token.
+- In token.service the checkToken() will use the isValidRefreshToken. (this control the navigation if not logged navifation to /login).
+- In user-table add the logic to refresh the user list with a button.
+- Till now the navigation inside the app continue if the refresh token is valid even if the access token was expired. BUT if the access token expires we can't get all users.
+
+
+
+
+
+- Install the jwt decode (this it the decoder we will use)
+```sh
+npm i jwt-decode
+```
 
 
 
 
 
 
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
 
 
 

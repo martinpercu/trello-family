@@ -276,6 +276,11 @@ ng g s services/auth --skip-tests
 - In login-form add logic to get the params. Then ==> this.form.controls.email.setValue(email);
 
 
+## Register + Login 
+- Implement all in one... make register and directly log the new user.
+- In auth.service create the method registerAndLogin ===> register() + login() with a switchMap -- avoiding callback hell ;) --
+- In register-form.component in the register() change the authService.register() for the new method registerAndLogin() (I left commented the old line to see the change)
+- Also change the navigate ===> /login to /app/boards  (I left commented the old line to see the change)
 
 
 

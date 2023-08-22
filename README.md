@@ -292,6 +292,37 @@ ng g s services/auth --skip-tests
 - In recovery-form in method recovery() add logic to change the password using the token get + the new password.
 
 
+# Token and manage session
+
+## Protect Route if not logged (manage session)
+- The session token is what we use to manage the session so create a service to manage this token.
+```sh
+ng g s services/token --skip-tests
+```
+- Only y this branch the token will be saved in localStorage. (this is not reccomended).
+- In new token.service create save, get and remove token methods.
+- In auth.service in the login() use .pipe to save the token.
+- In folder models create new file to define the responseModel in the login.
+- In auth.service import the ResponseModel.
+- In auth.service add the ResponseModel in the login().
+- OK... now when login we have in local storage.
+- Now create a guard... ===>
+```sh
+ng g g guards/auth --skip-tests
+```
+- Select CanActivate
+- In the new auth.guard import TokenService + Router. Then ...
+- Implement the logic to check if there is a token to allow or not.
+- NOW in app-routing.module import the AuthGuard and add canActivate in the path to the 'app'. Now only if the token OK we have access to the app area (boards, profile and users).
+- IMPORTANT!!! Since Angular 15 we can use canActivate as a function directly in the app-routing.
+- In app-routing import TokenService and the "inject" from angular/core
+- In token.service create a method to return true or false if find the token. ===> checkToken().
+- In app-routing replace the "AuthGuard" with the function checkToken().
+-     canActivate: [() => inject(TokenService).checkToken()]
+- So you no need the AuthGuard anymore... 
+- I left the guard it in the project and commented old lines to see an exemple for migration from Angular 14 to 15 and above. 
+
+
 
 
 

@@ -322,6 +322,13 @@ ng g g guards/auth --skip-tests
 - So you no need the AuthGuard anymore... 
 - I left the guard it in the project and commented old lines to see an exemple for migration from Angular 14 to 15 and above. 
 
+## Protect Route if not logged (manage session)
+- To save our token in a cookie install first ===>
+```sh
+npm i typescript-cookie
+```
+- Now in token.service.ts make chanches to use it. (I left commented old line to see the changes).  From now the token name will be token-frello, just because I like it ;).
+
 
 
 

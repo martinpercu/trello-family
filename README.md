@@ -327,7 +327,18 @@ ng g g guards/auth --skip-tests
 ```sh
 npm i typescript-cookie
 ```
-- Now in token.service.ts make chanches to use it. (I left commented old line to see the changes).  From now the token name will be token-frello, just because I like it ;).
+- Now in token.service.ts make chanches to use it. (I left commented old line to see the changes).  From now the token name will be tokenFrello, just because I like it ;).
+- To set the cookie add time for expiration. This case 365 days.
+- VERY IMPORTANT!!! In the cookie the PATH must be set. (in this case '/'). This allow to use it everywhere for create it for delete etc.
+
+## Redirect when log & logout implementation
+- In token.service add a new "guard" checkTokenRedirect().
+- Imported in app-routing.module
+- For logout in the auth.service.ts add method logout().
+- In navbar.component.ts import Authservice and Router
+- In navbar.component.ts create a logout() using authservice and Router. Once cookie delete navigate to /login.
+- In navbar.component.html add the (click) action.
+
 
 
 

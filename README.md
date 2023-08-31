@@ -359,7 +359,21 @@ ng g s services/users --skip-tests
 - Important I left commented the old line to see the changes.
 
 
-
+## Reactivity in the profile
+- We will create an observable with the profile an use this info without doing a request. (Just a request in login and the use the observable).
+- In auth.service ===> user$ = new BehaviorSubject<User | null>(null);
+- In auth.service ===> in getProfile() add a pipe + tap and add the user in the user$ (the observable).
+- In layout.component we will put the user$ (this place is good because is where we load the main app.) 
+- In layout.component import { AuthService } from '@services/auth.service';
+- In navbar.component change the user to user$ (I left the old line commented to see changes) ===> user$ = this.authService.user$;
+- In navbar.component we can remove the ngOnInit.
+- In navbar.component.html add a tag <ng-container *ngIf="user$ | async as user"> and put all inside. This is beacuse the observable is null at start so this wait just to get the user$ for then construc the html
+- To get user info in other places ===> in auth.service create a method to get the observable info ==> getDataUser().
+- As exemple in user-table.component in the ngOnInit ====>
+    this.authService.user$
+    .subscribe(user => {
+      this.user = user;
+    });
 
 
 

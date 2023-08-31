@@ -352,6 +352,11 @@ ng g s services/users --skip-tests
 - In user.service add the headers: ==> authorization: Bearer + token. (to get the tokes user tokenService + getToken())
 
 
+## Getting the profile
+- In auth.service create a method getProfile(). Is almost the same as the getUsers().
+- Then add all the logic to import the method in the navbar.component.ts
+- In the navbar.component.html add the logic for binding. 
+- Important I left commented the old line to see the changes.
 
 
 

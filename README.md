@@ -377,6 +377,29 @@ ng g s services/users --skip-tests
 
 
 
+## Interceptor for Token
+- The intercepto allow to catch all request and do something with this.
+```sh
+ng g interceptor interceptors/token --skip-tests
+```
+- In the new file import the token service.
+- Add the logic to add the token in the interceptor. ==> addToken().
+- IMPORTANT "good practices" ===> add a context to the interceptor.
+- Import HttpContext, HttpContextToken
+- const CHECK_TOKEN
+- export function checkToken()
+- in the intercept add the login to check the context.
+- IMPORTANT ! ==> in app.module ADD the interceptor!!! 
+- in app.module import HTTP_INTERCEPTORS and add in in providers.
+- Now in all endpoint thats need use the token write logic (in all cases I left commented lines in order to see the changes)
+- In auth.service import the ""checkToken""" from the interceptor
+- In auth.service the getProfile() make modification to user the checkToken()
+- In user.service import the ""checkToken""" from the interceptor
+- In user.service the getUsers() make modification to user the checkToken(). Also commented the lines with TokenService no need anymore
+
+
+
+
 
 
 

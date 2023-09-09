@@ -27,6 +27,26 @@ export class TokenService {
     return token;
   }
 
+  removeToken() {
+    // localStorage.removeItem('token');
+    removeCookie('tokenFrello');
+  }
+
+  // Refresh Token
+
+  saveRefreshToken(token: string) {
+    setCookie('refresh-tokenFrello', token, { expires: 365, path:'/'});
+  }
+
+  getRefreshToken() {
+    const token = getCookie('refresh-tokenFrello');
+    return token;
+  }
+
+  removeRefreshToken() {
+    removeCookie('refresh-tokenFrello');
+  }
+
   // checkToken() {
   //   // const token = localStorage.getItem('token');
   //   const token = getCookie('tokenFrello');
@@ -40,8 +60,8 @@ export class TokenService {
   // }
 
   checkToken() {
-    const isValidToken = this.isValidToken();
-    console.log('checking if token ===> ', isValidToken);
+    const isValidToken = this.isValidRefreshToken();
+    console.log('checking if isValidRefreshToken ===> ', isValidToken);
     if (!isValidToken) {
       this.router.navigate(['/login']);
       return false
@@ -67,13 +87,23 @@ export class TokenService {
     }
   }
 
-  removeToken() {
-    // localStorage.removeItem('token');
-    removeCookie('tokenFrello');
-  }
-
   isValidToken() {
     const token = this.getToken();
+    if (!token) {
+      return false;
+    }
+    const decodedToken = jwt_decode<JwtPayload>(token);
+    if (decodedToken && decodedToken?.exp) {
+      const tokenDate = new Date(0);
+      tokenDate.setUTCSeconds(decodedToken.exp);
+      const today = new Date();
+      return tokenDate.getTime() > today.getTime();
+    }
+    return false;
+  }
+
+  isValidRefreshToken() {
+    const token = this.getRefreshToken();
     if (!token) {
       return false;
     }

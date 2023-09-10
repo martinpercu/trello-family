@@ -428,26 +428,16 @@ npm i jwt-decode
 - Till now the navigation inside the app continue if the refresh token is valid even if the access token was expired. BUT if the access token expires we can't get all users.
 
 
+## Interceptor Refresh Token
+- In the token.interceptor we already only add the token in a specific context. That's help in order to avoid an infinite loop etc.
+- First add the endpoint for refresh. In auth.service create a refreshToken(). This endpoint give an access_token and a refresh_token. So we save both. ===> almost the same as the login().
+- In token.interceptor. import tha AuthService.
+- In the intercept add if token is valid. ===> "aValidToken". If OK return the addToken(). If not go to updateAccessAndRefreshToken().
+- Create the updateAccessAndRefreshToken(). This method must get the refresh token. Check if refresh token is valid. If true we stop the original request because the access token I know is invalid and with the refresh token I will demand new access an refresh tokens. Then I will add the new access token to the request using the switchMap => addToken(request, next).
+- The fantastic of this is we KNOW the acces_token is expired or deleted BEFORE make the request to the backend.  
 
 
 
-- Install the jwt decode (this it the decoder we will use)
-```sh
-npm i jwt-decode
-```
-
-
-
-
-
-
-
-##
-##
-##
-##
-##
-##
 ##
 ##
 ##

@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './components/layout/layout.component';
 
-import { TokenService } from '@services/token.service';
+// import { TokenService } from '@services/token.service';
+import { AuthGuard } from '@guards/auth.guard';
 
 
 const routes: Routes = [
@@ -18,19 +19,22 @@ const routes: Routes = [
       },
       {
         path: 'boards',
-        canActivate: [() => inject(TokenService).checkToken()],
+        // canActivate: [() => inject(TokenService).checkToken()],
+        canActivate: [ AuthGuard ],
         loadChildren: () =>
           import('../boards/boards.module').then((m) => m.BoardsModule),
       },
       {
         path: 'profile',
-        canActivate: [() => inject(TokenService).checkToken()],
+        // canActivate: [() => inject(TokenService).checkToken()],
+        canActivate: [ AuthGuard ],
         loadChildren: () =>
           import('../profile/profile.module').then((m) => m.ProfileModule),
       },
       {
         path: 'users',
-        canActivate: [() => inject(TokenService).checkToken()],
+        // canActivate: [() => inject(TokenService).checkToken()],
+        canActivate: [ AuthGuard ],
         loadChildren: () =>
           import('../users/users.module').then((m) => m.UsersModule),
       },

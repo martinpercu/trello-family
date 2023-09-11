@@ -9,7 +9,11 @@ import { ScrollComponent } from './pages/scroll/scroll.component';
 import { TableComponent } from './pages/table/table.component';
 
 // import { AuthGuard } from '@guards/auth.guard';
-import { TokenService } from '@services/token.service';
+// import { TokenService } from '@services/token.service';
+import { RedirectGuard } from '@guards/redirect.guard';
+import { AuthGuard } from '@guards/auth.guard';
+
+
 
 
 
@@ -37,13 +41,14 @@ const routes: Routes = [
   // },
   {
     path: '',
-    canActivate: [() => inject(TokenService).checkTokenRedirect()],
+    canActivate: [ RedirectGuard ],
+    // canActivate: [() => inject(TokenService).checkTokenRedirect()],
     loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'app',
-    // canActivate: [ AuthGuard ],
-    canActivate: [() => inject(TokenService).checkToken()],
+    canActivate: [ AuthGuard ],
+    // canActivate: [() => inject(TokenService).checkToken()],
     loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
   },
 ];

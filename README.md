@@ -434,7 +434,27 @@ npm i jwt-decode
 - In token.interceptor. import tha AuthService.
 - In the intercept add if token is valid. ===> "aValidToken". If OK return the addToken(). If not go to updateAccessAndRefreshToken().
 - Create the updateAccessAndRefreshToken(). This method must get the refresh token. Check if refresh token is valid. If true we stop the original request because the access token I know is invalid and with the refresh token I will demand new access an refresh tokens. Then I will add the new access token to the request using the switchMap => addToken(request, next).
-- The fantastic of this is we KNOW the acces_token is expired or deleted BEFORE make the request to the backend.  
+- The fantastic of this is we KNOW the acces_token is expired or deleted BEFORE make the request to the backend. 
+
+## Refact for redirect with guard
+- Create a guard for this redirect 
+```sh
+ng g g guards/redirect --skip-tests
+```
+- In the new redirect.guard almost copy the auth.guard but the logic is: "If you have a token continue to the app".
+- In app-routing.module implement this redirect guard in "path: ''.
+- Now we could eliminate the "checkTokenRedirect()" from the token.service.ts. (I will commented to see the lines anyway).
+- Obviously is recommended to make the same as the previous auth.guard.
+- So in app-routing.module implement this auth.guard in the "path: '/login'.
+- Now we could eliminate the "checkToken()" from the token.service.ts. (I will commented to see the lines anyway).
+- IMPORTANT if we eliminate the "checkToken()" we must import the auth.guard also in the layout-routing.module. (I left commented the old lines in order to see the changes).
+
+
+
+
+
+
+
 
 
 

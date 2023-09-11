@@ -47,7 +47,7 @@ export class TokenService {
     removeCookie('refresh-tokenFrello');
   }
 
-  // checkToken() {
+  // checkTokenOLD() {
   //   // const token = localStorage.getItem('token');
   //   const token = getCookie('tokenFrello');
   //   // const token = this.getToken();
@@ -59,17 +59,17 @@ export class TokenService {
   //   return true;
   // }
 
-  checkToken() {
-    const isValidToken = this.isValidRefreshToken();
-    console.log('checking if isValidRefreshToken ===> ', isValidToken);
-    if (!isValidToken) {
-      this.router.navigate(['/login']);
-      return false
-    }
-    return true;
-  }
+  // checkToken() {
+  //   const isValidToken = this.isValidRefreshToken();
+  //   console.log('checking if isValidRefreshToken ===> ', isValidToken);
+  //   if (!isValidToken) {
+  //     this.router.navigate(['/login']);
+  //     return false
+  //   }
+  //   return true;
+  // }
 
-  // checkTokenRedirect() {
+  // checkTokenRedirectOLD() {
   //   // const token = localStorage.getItem('token');
   //   const token = getCookie('tokenFrello');
   //   // const token = this.getToken();
@@ -79,13 +79,13 @@ export class TokenService {
   //   }
   // }
 
-  checkTokenRedirect() {
-    const isValidToken = this.isValidToken();
-    console.log('checking if token to Redirect');
-    if (isValidToken) {
-      this.router.navigate(['/app']);
-    }
-  }
+  // checkTokenRedirect() {
+  //   const isValidToken = this.isValidToken();
+  //   console.log('checking if token to Redirect');
+  //   if (isValidToken) {
+  //     this.router.navigate(['/app']);
+  //   }
+  // }
 
   isValidToken() {
     const token = this.getToken();

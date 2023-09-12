@@ -450,6 +450,21 @@ ng g g guards/redirect --skip-tests
 - IMPORTANT if we eliminate the "checkToken()" we must import the auth.guard also in the layout-routing.module. (I left commented the old lines in order to see the changes).
 
 
+## Connect user boards
+- Create a service 
+```sh
+ng g s services/me
+```
+- In the meService add logic to get the profile.
+- In auth service import the meService and use in the getProfile(). (I comment the old method so see the difference).
+- Now we will get the boards of the user===> in me.service add a getMeBoards(). the logic is quite the same as the getMeProfile().
+- As we will receive a list of Boards we will create the model for this.
+- In folder models new file board.model.ts. Here we create the model for Boards.
+- Now in boards.component.ts create a method to get the user boards using the meService ===> getMeBoards() .
+- Get board list in the ngOnInito().
+- In boards.component.html show with an *ngFor the list of the boards. (I left also 2 hardcoded boards to show something when user has no boards).
+
+
 
 
 

@@ -536,6 +536,23 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 - If a card(D) moves between card(B)32765 and card(A)65535 the card position value will be the average from A and B card ===> (32757 + 65535) ÷ 2 = 49151
 
 
+## Algorithm card position DETECTION
+- There are 4 type of condition. <br>
+1 - If is empty ===> so a new card<br>
+2 - If moves on top<br>
+4 - If moves somewhere in the middle<br>
+3 - If moves on bottom<br>
+- In board.component With the event CdkDragDrop we know if the card is move in the same list or is move to another list.
+- In board.service create a method getPosition()
+- In board.component after the event CdkDragDrop execute the getPosition() from boardsServices.
+- The getPosition() ==> if (cards.length === 1) Is a new card.
+- The getPosition() ==> if (cards.length > 1 && currentIndex === 0) Is in TOP.
+- The getPosition() ==> if (cards.length > 2 && currentIndex > 0 && currentIndex < lastIndex) Is somewhere in the middle.
+- The getPosition() ==> if (cards.length > 1 && currentIndex === lastIndex) Is the last one in the bottom of the list
+- With this we know where is moved the card.
+
+
+
 
 
 

@@ -519,6 +519,21 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 - In todo-dialog.component also refact!!!!.
 
 
+## Algorithm card position
+- The card has a position value to order them in the list.
+- So we will create an algorithm that give a position number in relation to other.
+- So we need 4 steps to get this goal.<br> <br> 
+
+1 - The algorithm its self.<br>
+2 - Detect the movement of the card.<br>
+3 - Calculate the new position.<br>
+4 - Update in DB the positio.<br><br>
+
+- The algorithm is like this. We start with a bufferSpace = 65535 (check in google why this number). 
+- So the first new card(A) will have this position (65535). 
+- Then if a new card(B) in an first position will get the position of first card(A)divided by 2. So the card(B) position is (32767)
+- If a a new card(C) fo to the last position will get the value from the bufferSpace + the position N° from last card position.
+- If a card(D) moves between card(B)32765 and card(A)65535 the card position value will be the average from A and B card ===> (32757 + 65535) ÷ 2 = 49151
 
 
 

@@ -552,6 +552,13 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 - With this we know where is moved the card.
 
 
+## Algorithm card position CALCULATION
+- In board.service add the const bufferSpace = 65535.
+- Now in each if in the getPosition() add the login to return the new position for the card. IMPORTANT!!! ==> Remember the method act just after the movement of the card. This is important in relation of index of cards.
+ 
+
+
+
 
 
 

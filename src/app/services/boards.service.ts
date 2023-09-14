@@ -52,6 +52,6 @@ export class BoardsService {
       const theLastCardPosition = cards[lastIndex - 1].position; // the BOTTOM position is [lastIndex - 1] because the new card NOW is in the last position ==> in position [lastIndex]... Remember this is just after the card movement.
       return theLastCardPosition + this.bufferSpace;
     }
-    return 'other';
+    return 0; // is important to return a number!!!!! Because the position is number so in the update the typing must be a number.
   }
 }

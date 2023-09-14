@@ -10,6 +10,7 @@ import { Board } from '@models/board.model';
 import { Card } from '@models/card.model';
 
 import { BoardsService } from '@services/boards.service';
+import { CardsService } from '@services/cards.service';
 
 
 @Component({
@@ -54,6 +55,7 @@ export class BoardComponent implements OnInit{
   private dialog = inject(Dialog);
   private route = inject(ActivatedRoute);
   private boardsService = inject(BoardsService);
+  private cardsService = inject(CardsService);
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -138,9 +140,10 @@ export class BoardComponent implements OnInit{
         event.currentIndex
       );
     }
-    const rta = this.boardsService.getPosition(event.container.data, event.currentIndex);
-    console.log(rta);
-
+    const position = this.boardsService.getPosition(event.container.data, event.currentIndex);
+    console.log(position);
+    const card = event.container.data[event.currentIndex];
+    this.updateCard(card, position);
   }
 
   addColumn() {
@@ -229,6 +232,14 @@ export class BoardComponent implements OnInit{
     this.boardsService.getBoard(id)
     .subscribe(board => {
       this.board = board
+    })
+  }
+
+  private updateCard(card: Card, position: number) {
+    this.cardsService.update(card.id, { position })
+    .subscribe((cardUpdated) => {
+      console.log(cardUpdated);
+
     })
   }
 

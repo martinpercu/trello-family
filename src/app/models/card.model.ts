@@ -13,6 +13,6 @@ export interface UpdatedCardDto {
   title?: string;
   description?: string;
   position?: number;
-  listId?: string;
+  listId?: number | string;
   boardId?: string;
 }

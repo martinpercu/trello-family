@@ -568,6 +568,16 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 - Now we move a card (new position in DB) then update site the order given by DB will take in consideration the new position N°. So will show the order as we did.
 
 
+## Algorithm card position UPDATE LIST
+- We add the listId in the card. 
+- In board.component.html to get the list Id where the card is in the cdkDropList div [id]="list.id". With this we get the id from the list.
+- In board.componen.ts in drop(event: CdkDragDrop<Card[]>) create a const listId getting the id from the "event.container.id" (the [id]="list.id" from html).
+- Then the this.updateCard(card, position) add the new param "listId".
+- In the private updateCard() add listId?: number | string
+- Also check the card.model ... in the UpdatedCardDto. listId?: number | string; (this to avoid conflicts).
+
+
+
 
 
 

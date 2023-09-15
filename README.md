@@ -577,6 +577,21 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 - Also check the card.model ... in the UpdatedCardDto. listId?: number | string; (this to avoid conflicts).
 
 
+## Nav Board UI (create the element in navbar)
+- In navbar.component.html create an overlay in the "Create" button. ===> cdkOverlayOrigin, also add a name #createBoardOverlay="cdkOverlayOrigin".
+- In navbar.component.html add an ng-template for create the overlay.
+- In this ng-template create a simple header + a "form" with an input for the name and also a palette of colors to give also a color to this boards.
+- This form will be a new component ==>  board-form... so..===>
+```sh
+ng g c modules/layout/components/board-form --skip-tests --style=none
+```
+- Now in navbar.component.html just add the <app-board-form></app-board-form>
+- IMPORTANT in layout.module import the ReactiveFormsModule from angular/forms
+- In the board-form create the form.
+
+
+
+
 
 
 

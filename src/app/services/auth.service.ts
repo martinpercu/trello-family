@@ -11,6 +11,8 @@ import { User } from '@models/user.model';
 
 import { checkToken } from '@interceptors/token.interceptor';
 
+import { MeService } from '@services/me.service';
+
 
 
 @Injectable({
@@ -23,6 +25,7 @@ export class AuthService {
 
   private http = inject(HttpClient);
   private tokenService = inject(TokenService);
+  private meService = inject(MeService);
   // constructor() { }
 
   getDataUser() {
@@ -88,14 +91,23 @@ export class AuthService {
     });
   }
 
+  // getProfile()  {
+  //   // const token = this.tokenService.getToken();
+  //   return this.http.get<User>(`${this.apiUrl}/api/v1/auth/profile`, {
+  //     // headers: {
+  //     //   authorization: `Bearer ${token}`
+  //     // }
+  //     context: checkToken()
+  //   })
+  //   .pipe(
+  //     tap(user => {
+  //       this.user$.next(user)
+  //     })
+  //   );
+  // }
+
   getProfile()  {
-    // const token = this.tokenService.getToken();
-    return this.http.get<User>(`${this.apiUrl}/api/v1/auth/profile`, {
-      // headers: {
-      //   authorization: `Bearer ${token}`
-      // }
-      context: checkToken()
-    })
+    return this.meService.getMeProfile()
     .pipe(
       tap(user => {
         this.user$.next(user)

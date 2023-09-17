@@ -599,6 +599,17 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - Update the form with validators and a new FormControl (this is to works OK with API and TS).
 
 
+## Close overlay after navigation
+- This is easy but need some steps.
+- We must send from son to father the info 
+- In the NavBar we make the render of form. So from here we must to close it. 
+- So from board-form.component we add an Output ==> "closeOverlay" as ne EventEmitter
+- In createNewBoard() just before the navigation to the new board all this "closeOverlay" sending false ===> because the state open is in true and close in falls ("(overlayOutsideClick)="isOpenOverlayCreateBoards = !isOpenOverlayCreateBoards").
+- In the navbar html in <app-board-form (closeOverlay)="closeBoardForm()"></app-board-form>
+- In navbar ts add the method closeBoardForm() with this.isOpenOverlayCreateBoards = false
+- I also left another way to do it with more control. Is almost the same but is useful to see how works. The dif is that the event we getting is the event we send. (in this case is redundant because is a boolean so to close will be false but if we want another event in the future this is a way to manage the event) ==> closeBoardForm2()
+- This last are commented only in the html.
+
 
 
 

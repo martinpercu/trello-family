@@ -1,17 +1,73 @@
-<form [formGroup]="form" novalidate class="space-y-6" (ngSubmit)="saveCreateBoardForm()">
+<form [formGroup]="form" novalidate class="space-y-6" (ngSubmit)="createNewBoard()">
   <div class="flex flex-wrap">
     <div class="flex items-center mr-4">
         <input
-          id="lime-radio"
+          id="violet-radio"
           type="radio"
-          value="lime"
+          value="violet"
           name="backgroundColor"
           formControlName="backgroundColor"
-          class="w-4 h-4 text-lime-600 bg-gray-100 border-gray-300 focus:ring-lime-500 focus:ring-2">
+          class="w-4 h-4 text-violet-600 bg-gray-100 border-gray-300 focus:ring-violet-500 focus:ring-2">
         <label
-          for="lime-radio"
+          for="violet-radio"
           class="ml-2 text-sm font-medium text-gray-900"
-          >Lime</label
+          >Violet</label
+        >
+    </div>
+    <div class="flex items-center mr-4">
+        <input
+          id="yellow-radio"
+          type="radio"
+          value="yellow"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+          class="w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 focus:ring-yellow-500 focus:ring-2">
+        <label
+          for="yellow-radio"
+          class="ml-2 text-sm font-medium text-gray-900"
+          >Yellow</label
+        >
+    </div>
+    <div class="flex items-center mr-4">
+        <input
+          id="green-radio"
+          type="radio"
+          value="green"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+          class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 focus:ring-2">
+        <label
+          for="green-radio"
+          class="ml-2 text-sm font-medium text-gray-900"
+          >green</label
+        >
+    </div>
+    <div class="flex items-center mr-4">
+        <input
+          id="red-radio"
+          type="radio"
+          value="red"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+          class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 focus:ring-2">
+        <label
+          for="red-radio"
+          class="ml-2 text-sm font-medium text-gray-900"
+          >Red</label
+        >
+    </div>
+    <div class="flex items-center mr-4">
+        <input
+          id="gray-radio"
+          type="radio"
+          value="gray"
+          name="backgroundColor"
+          formControlName="backgroundColor"
+          class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 focus:ring-gray-500 focus:ring-2">
+        <label
+          for="gray-radio"
+          class="ml-2 text-sm font-medium text-gray-900"
+          >Gray</label
         >
     </div>
     <div class="flex items-center mr-4">
@@ -26,34 +82,6 @@
           for="sky-radio"
           class="ml-2 text-sm font-medium text-gray-900"
           >Sky</label
-        >
-    </div>
-    <div class="flex items-center mr-4">
-        <input
-          id="fuchsia-radio"
-          type="radio"
-          value="fuchsia"
-          name="backgroundColor"
-          formControlName="backgroundColor"
-          class="w-4 h-4 text-fuchsia-600 bg-gray-100 border-gray-300 focus:ring-fuchsia-500 focus:ring-2">
-        <label
-          for="fuchsia-radio"
-          class="ml-2 text-sm font-medium text-gray-900"
-          >Fuchsia</label
-        >
-    </div>
-    <div class="flex items-center mr-4">
-        <input
-          id="teal-radio"
-          type="radio"
-          value="teal"
-          name="backgroundColor"
-          formControlName="backgroundColor"
-          class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 focus:ring-2">
-        <label
-          for="teal-radio"
-          class="ml-2 text-sm font-medium text-gray-900"
-          >Teal</label
         >
     </div>
 </div>

@@ -9,6 +9,7 @@ import { Card } from '@models/card.model';
 
 
 import { checkToken } from '@interceptors/token.interceptor';
+import { Allcolors } from '@models/colors.model';
 
 
 
@@ -27,6 +28,15 @@ export class BoardsService {
     return this.http.get<Board>(`${this.apiUrl}/api/v1/boards/${id}`, {
       context: checkToken()
     });
+  }
+
+  createBoard(title: string, backgroundColor: Allcolors) {
+    return this.http.post<Board>(`${this.apiUrl}/api/v1/boards`, {
+      title,
+      backgroundColor
+    }, {
+      context: checkToken(),
+    })
   }
 
   getPosition(cards: Card[], currentIndex: number) {

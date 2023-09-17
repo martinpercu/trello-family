@@ -1,4 +1,4 @@
-export type Allcolors = 'sky' | 'green' | 'violet' | 'gray' | 'yellow' | 'success' | 'primary' | 'danger' | 'light' ;
+export type Allcolors = 'sky' | 'green' | 'violet' | 'teal' | 'gray' | 'lime' | 'fuchsia' | 'yellow' | 'success' | 'primary' | 'danger' | 'light' ;
 
 export type ObjALLCOLORS = Record<string, Record<string, boolean>>
 
@@ -13,9 +13,24 @@ export const ALLCOLORS: ObjALLCOLORS = {
     'hover:bg-green-800': true,
     'text-white': true
   },
+  teal: {
+    'bg-teal-600': true,
+    'hover:bg-teal-800': true,
+    'text-white': true
+  },
+  fuchsia: {
+    'bg-fuchsia-600': true,
+    'hover:bg-fuchsia-800': true,
+    'text-white': true
+  },
   violet: {
     'bg-violet-600': true,
     'hover:bg-violet-800': true,
+    'text-white': true
+  },
+  lime: {
+    'bg-lime-600': true,
+    'hover:bg-lime-800': true,
     'text-white': true
   },
   gray: {

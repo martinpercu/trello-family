@@ -464,7 +464,17 @@ ng g s services/me
 - Get board list in the ngOnInito().
 - In boards.component.html show with an *ngFor the list of the boards. (I left also 2 hardcoded boards to show something when user has no boards).
 
-
+## Cards Colors
+- Create a shared module to manage card colors 
+```sh
+ng g c modules/shared/components/card-color --skip-tests --style=none
+```
+- IMPORTANT! We are using Taildwind. We need to get the color info BEFORE render it.
+- In card-color.component.ts prepare the colors will use in html. Also a method to get the colors. --> get colors()
+- In card-color.component.html create the card template. Important add the [ngClass]="colors".
+- Now tu use this component ===> In shared.module in the exports the CardColorComponent.
+- In boards.component.html implement the <app-card-color> with also an *ngFor to render the list.
+- Important in the board.model add the type backgroundColor exact as the card-color.component.ts.  
 
 
 

@@ -633,6 +633,17 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - In the board.component.html add the new input.
 
 
+## New card connection api
+- The board, to create it, needs: title+description+position+boardId+listId.
+- In card.model create the DTO for the card. We will use the exteds from Card. (I will left commented also the same without using the exteds.. jkust for understand clear what I'm doing.) (only I need to add the "?" in description in Card). I don't need the "id" or the "list". For that's we use also Omit. 
+- In cards.service add method create(dto: CreateCardDto)
+- In the board.component.ts in the createCard() implement the logic.
+- In the board.component.html add "list" to method createCard().
+- Everything is OK. Now we must to fix the position and the UX.
+- Each card allways goes to the end of list. So there are 2 posibilities. <br>
+1 - Is a new card. ===> is the only one.<br>
+2 - Is not a new cards ===> goes to botton in the list.<br>
+- In boards.service (where we have the getPosition()) create a new new method getPositionOfNewCard(). This will is similar to get position but remember is for the new cards. Is important to remember this because now the card will be first if (cards.length === 0). and theLastCardPosition is the card[lastIndex].
 
 
 

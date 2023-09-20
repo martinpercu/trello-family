@@ -35,6 +35,15 @@
             {{ card.title }} -- {{ card.position }}
           </div>
         </div>
+        <div class="mt-6">
+          <app-btn *ngIf="!list.showCardForm" color="light" (click)="openFormCard(list)">Add new Card</app-btn>
+          <div *ngIf="list.showCardForm">
+            The power form ! ! !
+            <app-btn color="danger" (click)="closeFormCard(list)">close new Card</app-btn>
+
+
+          </div>
+        </div>
       </div>
       <app-btn color="light" class="shrink-0" (click)="addColumn()">+ Ajoutez une autre liste</app-btn>
     </div>

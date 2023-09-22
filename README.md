@@ -436,6 +436,7 @@ npm i jwt-decode
 - Create the updateAccessAndRefreshToken(). This method must get the refresh token. Check if refresh token is valid. If true we stop the original request because the access token I know is invalid and with the refresh token I will demand new access an refresh tokens. Then I will add the new access token to the request using the switchMap => addToken(request, next).
 - The fantastic of this is we KNOW the acces_token is expired or deleted BEFORE make the request to the backend. 
 
+
 ## Refact for redirect with guard
 - Create a guard for this redirect 
 ```sh
@@ -464,18 +465,29 @@ ng g s services/me
 - Get board list in the ngOnInito().
 - In boards.component.html show with an *ngFor the list of the boards. (I left also 2 hardcoded boards to show something when user has no boards).
 
+
 ## Cards Colors
 - Create a shared module to manage card colors 
 ```sh
 ng g c modules/shared/components/card-color --skip-tests --style=none
 ```
-- IMPORTANT! We are using Taildwind. We need to get the color info BEFORE render it.
+- IMPORTANT! We are using Tailwind. We need to get the color info BEFORE render it.
 - In card-color.component.ts prepare the colors will use in html. Also a method to get the colors. --> get colors()
 - In card-color.component.html create the card template. Important add the [ngClass]="colors".
 - Now tu use this component ===> In shared.module in the exports the CardColorComponent.
 - In boards.component.html implement the <app-card-color> with also an *ngFor to render the list.
 - Important in the board.model add the type backgroundColor exact as the card-color.component.ts.  
 
+
+## Typing the colors
+- We will typing all colors in one place to use them in cards, buttons and futures components.
+- In folder model create a new file colors.model.ts. There export type "Allcolors" with the list of all colors used from button and from card-color.
+- In card-color.components and in button.component import that "Allcolors" and replace the @Input.
+- Ask we have more colors in Allcolors than before for each component we must to replace the mapColor for a "fullmapcolor". So un colors.model create a const ALLCOLORS with the fusion of mapColors from button and card-color.
+- Then import ALLCOLORS in button.component and card-color.component and use to replace the object in mapColors.
+- Now we will type the ALLCOLORS to allow only boolean assignation.
+- We will use an utility type from typescrip "Record". Record is for typing objects. So ALLCOLORS will be type ObjALLCOLORS. ====> "export type ObjALLCOLORS = Record<string, Record<string, boolean>>"
+- Just remember in tailwind.config we have the color config for names like succes, danger, primary etc. etc.
 
 
 

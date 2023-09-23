@@ -490,6 +490,39 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 - Just remember in tailwind.config we have the color config for names like succes, danger, primary etc. etc.
 
 
+## Getting boards for an user
+- When the API returns the "boards" from an user returns a structure like this==> <br>
+```sh
+{
+	"id": 1,
+	"title": "Board 1",
+	"backgroundColor": "sky",
+	"creationAt": "2023-09-13T10:44:07.000Z",
+	"updatedAt": "2023-09-13T10:44:07.000Z",
+	"members": [],
+	"lists": [],
+	"cards": []
+}
+```
+- "members", "lists" and "cards" are arrays of objects.
+- In service create a boards.service.ts . Create a method to getBoard().
+- In board.component ==> "import { ActivatedRoute } from '@angular/router';" and inject in. ==> "private route = inject(ActivatedRoute);".
+- In board.component implement the Oninit to get the path. Important the id we get in the path must be the same as we have in the boards-routing. (I will use 'boardId')
+- In board.component add a private method to getBoard().... this will be call the ngOnInit if there is an ID for the board.
+- In board.component "import { BoardsService } from '@services/boards.service';" and inject it.
+- In board.component import Board model. + add ==> "board: Board | null = null". Is important to add the "null" because we need to wait a little bit to get the board from the API.
+- In board.component in getBoard() a ask the boardsService and subscribe the getBoard and assig this to the "board". With this we can use in the HTML component.
+- In board.component.html just with {{ board?.title }} we are using the board info. IMPORTANT we need the "?" symbol because the board start being null.
+- Now will refact to render the boards with the API format.
+- In board.model update the interface to match with the API format. Create the models Cards and List to match the requirements.
+- Now hardcoded object "column" is not need it anymore. So refact the board component html and ts in order to render the boards comming from the API.  ==> In general in the html "columns" becomes "boards?.lists" | "column" becomes "list" | "todos" becomes "cards"
+- In todo-dialog.component also refact!!!!.
+
+
+
+
+
+
 
 
 

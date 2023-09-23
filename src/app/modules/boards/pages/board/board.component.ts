@@ -66,6 +66,12 @@ export class BoardComponent implements OnInit {
     nonNullable: true,
     validators: [Validators.required]
   });
+  inputList = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required]
+  });
+
+  showListForm = false;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -156,11 +162,9 @@ export class BoardComponent implements OnInit {
     this.updateCard(card, position, listId);
   }
 
-  addColumn() {
-    // this.columns.push({
-    //   title: 'New Column',
-    //   todos: [],
-    // });
+  addNewList() {
+    const title = this.inputList.value;
+    console.log(title);
   }
 
   openDialog(task: Card) {

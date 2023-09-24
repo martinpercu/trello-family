@@ -6,6 +6,7 @@ import { environment } from '@environments/environment'
 import { User } from '@models/user.model';
 import { Board } from '@models/board.model';
 import { Card } from '@models/card.model';
+import { List } from '@models/list.model';
 
 
 import { checkToken } from '@interceptors/token.interceptor';
@@ -66,13 +67,33 @@ export class BoardsService {
   }
 
 
-  getPositionOfNewCard(cards: Card[]) {
-    if (cards.length === 0) { // this means card is empty (when is a new card)
+  // getPositionOfNewCard(cards: Card[]) {
+  //   if (cards.length === 0) { // this means card is empty (when is a new card)
+  //     console.log('Is New Card');
+  //     return this.bufferSpace;
+  //   }
+  //   const lastIndex = cards.length - 1;
+  //   const theLastCardPosition = cards[lastIndex].position;
+  //   return theLastCardPosition + this.bufferSpace;
+  // }
+
+  // getPositionOfNewList(lists: List[]) {
+  //   if (lists.length === 0) {
+  //     console.log('Is New Card');
+  //     return this.bufferSpace;
+  //   }
+  //   const lastIndex = lists.length - 1;
+  //   const theLastCardPosition = lists[lastIndex].position;
+  //   return theLastCardPosition + this.bufferSpace;
+  // }
+
+  getPositionOfNewElement(elements: Card[] | List[]) {
+    if (elements.length === 0) {
       console.log('Is New Card');
       return this.bufferSpace;
     }
-    const lastIndex = cards.length - 1;
-    const theLastCardPosition = cards[lastIndex].position;
+    const lastIndex = elements.length - 1;
+    const theLastCardPosition = elements[lastIndex].position;
     return theLastCardPosition + this.bufferSpace;
   }
 

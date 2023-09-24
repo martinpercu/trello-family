@@ -14,6 +14,7 @@ import { Card } from '@models/card.model';
 
 import { BoardsService } from '@services/boards.service';
 import { CardsService } from '@services/cards.service';
+import { ListsService } from '@services/lists.service';
 import { List } from '@models/list.model';
 
 
@@ -60,6 +61,7 @@ export class BoardComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private boardsService = inject(BoardsService);
   private cardsService = inject(CardsService);
+  private listsService = inject(ListsService);
 
   board: Board | null = null
   inputCard = new FormControl<string>('', {
@@ -165,6 +167,21 @@ export class BoardComponent implements OnInit {
   addNewList() {
     const title = this.inputList.value;
     console.log(title);
+    if (this.board) {
+      this.listsService.create({
+        title,
+        boardId: this.board.id,
+        position: this.boardsService.getPositionOfNewElement(this.board.lists)
+      })
+      .subscribe(list => {
+        this.board?.lists.push({
+          ...list,
+          cards: [],
+        });
+        this.showListForm = true;
+        this.inputList.setValue('');
+      })
+    }
   }
 
   openDialog(task: Card) {
@@ -287,7 +304,7 @@ export class BoardComponent implements OnInit {
         title,
         listId: list.id,
         boardId: this.board.id,
-        position: this.boardsService.getPositionOfNewCard(list.cards),
+        position: this.boardsService.getPositionOfNewElement(list.cards),
       }).subscribe(card => {
         list.cards.push(card);
         this.inputCard.setValue('');

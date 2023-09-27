@@ -68,3 +68,43 @@ export const ALLCOLORS: ObjALLCOLORS = {
     'text-white': true,
   }
 }
+
+export const BACKGROUNDS: ObjALLCOLORS =  {
+  sky: {
+    'bg-sky-500': true,
+  },
+  green: {
+    'bg-green-500': true,
+  },
+  teal: {
+    'bg-teal-500': true,
+  },
+  fuchsia: {
+    'bg-fuchsia-500': true,
+  },
+  violet: {
+    'bg-violet-500': true,
+  },
+  lime: {
+    'bg-lime-500': true,
+  },
+  gray: {
+    'bg-gray-500': true,
+  },
+  yellow: {
+    'bg-yellow-500': true,
+  },
+  success: {
+    'bg-success-500': true,
+  },
+  primary: {
+    'bg-primary-500': true,
+  },
+  danger: {
+    'bg-red-500': true,
+  },
+  light: {
+    'bg-primary-500': true,
+  }
+
+}

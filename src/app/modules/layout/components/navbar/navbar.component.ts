@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 
 import { TokenService } from '@services/token.service';
 
+import { BoardsService } from '@services/boards.service';
+import { Allcolors, NAVBAR_BACKGROUNDS } from '@models/colors.model';
+
+
 
 
 @Component({
@@ -32,12 +36,19 @@ export class NavbarComponent
 
   // user : User | null = null;
   user$ = this.authService.user$;
+  navBarBackgroundColor: Allcolors = 'sky';
+  navBarColors = NAVBAR_BACKGROUNDS;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private tokenService: TokenService
-  ) {}
+    private tokenService: TokenService,
+    private boardsService: BoardsService
+  ) {
+    this.boardsService.backgroundColor$.subscribe(color => {
+      this.navBarBackgroundColor = color;
+    });
+  }
 
   // ngOnInit() {
   //   this.authService.getProfile()
@@ -61,6 +72,11 @@ export class NavbarComponent
   }
   closeBoardForm2(event: boolean) { // here we expect a false
     this.isOpenOverlayCreateBoards = event; // this event we send to html
+  }
+
+  get colors() {
+    const classes = this.navBarColors[this.navBarBackgroundColor];
+    return classes ? classes : {} ;
   }
 
 }

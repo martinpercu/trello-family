@@ -555,7 +555,30 @@ ng g c modules/shared/components/card-color --skip-tests --style=none
 ## Algorithm card position CALCULATION
 - In board.service add the const bufferSpace = 65535.
 - Now in each if in the getPosition() add the login to return the new position for the card. IMPORTANT!!! ==> Remember the method act just after the movement of the card. This is important in relation of index of cards.
- 
+
+
+## Algorithm card position UPDATE CARD
+- In services create a cards.services.ts
+- In new cards.services.ts create method update().  
+- In card.model add an interface for the update (UpdatedCardDto). Is similar to Card but everything is optional and there are also a listId and a boardId.
+- In board.component inside the "drop(event: CdkDragDrop<Card[]>)" add a const card to identify the card we will update after moves.
+- In board.component "import { CardsService } from '@services/cards.service';" and inject it.
+- In board.component create a private method ==> updateCard()
+- In board.component inside the "drop(event: CdkDragDrop<Card[]>)" implement the private method updateCard().
+- Now we move a card (new position in DB) then update site the order given by DB will take in consideration the new position N°. So will show the order as we did.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

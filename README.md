@@ -590,6 +590,18 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - In the board-form create the form.
 
 
+## Board New To API
+- In boards.serviece create a method creatBoard(). We need the "title" + "the backgroundColor". Don't forget the context checkToken().
+- In board-form.component import this service.
+- Import Validators and  FormControl from angular forms. 
+- Import Allcolors from models colors. 
+- Import RouterNavigate (this is to navigate to the new board)
+- Update the form with validators and a new FormControl (this is to works OK with API and TS).
+
+
+
+
+
 
 
 

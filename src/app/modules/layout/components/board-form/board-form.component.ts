@@ -1,5 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
+
+import { BoardsService } from '@services/boards.service';
+import { Allcolors } from '@models/colors.model';
 
 @Component({
   selector: 'app-board-form',
@@ -8,16 +12,26 @@ import { FormBuilder } from '@angular/forms';
 export class BoardFormComponent {
 
   private formBuilder = inject(FormBuilder);
+  private boardsService = inject(BoardsService);
+  private router = inject(Router);
 
-  form = this.formBuilder.group({
-    title: [''],
-    backgroundColor: ['']
+  form = this.formBuilder.nonNullable.group({
+    title: ['', [Validators.required]],
+    backgroundColor: new FormControl<Allcolors>('green', {
+      nonNullable: true,
+      validators: [Validators.required]
+    })
   });
 
-  saveCreateBoardForm() {
+  createNewBoard() {
     if (this.form.valid) {
       const { title, backgroundColor } = this.form.getRawValue();
       console.log(title, backgroundColor);
+      this.boardsService.createBoard(title, backgroundColor)
+      .subscribe(board => {
+        console.log(board);
+        this.router.navigate(['./app/boards', board.id])
+      })
 
       // create
     } else {

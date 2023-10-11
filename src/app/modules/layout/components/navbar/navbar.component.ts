@@ -56,4 +56,11 @@ export class NavbarComponent
 
   }
 
+  closeBoardForm() {
+    this.isOpenOverlayCreateBoards = false
+  }
+  closeBoardForm2(event: boolean) { // here we expect a false
+    this.isOpenOverlayCreateBoards = event; // this event we send to html
+  }
+
 }

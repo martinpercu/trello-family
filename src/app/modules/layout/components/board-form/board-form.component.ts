@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 
@@ -10,6 +10,8 @@ import { Allcolors } from '@models/colors.model';
   templateUrl: './board-form.component.html'
 })
 export class BoardFormComponent {
+
+  @Output() closeOverlay = new EventEmitter<boolean>();
 
   private formBuilder = inject(FormBuilder);
   private boardsService = inject(BoardsService);
@@ -30,6 +32,7 @@ export class BoardFormComponent {
       this.boardsService.createBoard(title, backgroundColor)
       .subscribe(board => {
         console.log(board);
+        this.closeOverlay.next(false);
         this.router.navigate(['./app/boards', board.id])
       })
 

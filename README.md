@@ -611,6 +611,17 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - This last are commented only in the html.
 
 
+## New card userser interface (UI)
+- In the list there is the option to add a new card.
+- In the modules/boards/pages/board/board.component.html add an new app-btn. To open and show the form to create the card.
+- In board.component.ts add a new "state" ==> showCardForm. Using it to show or not in the previous app-btn
+- This showCardForm state is a general state. So when we click on button all the list change. So to fix that===> 
+- In list.model add an optional boolean new key ==> "showCardForm?" 
+- In board.component.html remplace the showCardForm for list.showCardForm.
+- Now we must deactivate the showCardForm from different list. So===>
+- In the board.component.ts create new method openFormCard(list) and ===> "list.showCardForm = !list.showCardForm"
+- In board.component.html (click) = openFormCard(list).
+- Is almost. To avoid left more than 2 formCard open the method openFormCard() must check if other list are open and close. So with an array with map in this method will resolve this.
 
 
 

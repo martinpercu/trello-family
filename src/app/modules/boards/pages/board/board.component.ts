@@ -1,7 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CdkDragDrop, moveItemInArray,
-  transferArrayItem } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop, moveItemInArray,
+  transferArrayItem
+} from '@angular/cdk/drag-drop';
 import { Dialog } from '@angular/cdk/dialog';
 import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.component';
 
@@ -11,6 +13,7 @@ import { Card } from '@models/card.model';
 
 import { BoardsService } from '@services/boards.service';
 import { CardsService } from '@services/cards.service';
+import { List } from '@models/list.model';
 
 
 @Component({
@@ -50,12 +53,15 @@ import { CardsService } from '@services/cards.service';
       `
   ],
 })
-export class BoardComponent implements OnInit{
+export class BoardComponent implements OnInit {
 
   private dialog = inject(Dialog);
   private route = inject(ActivatedRoute);
   private boardsService = inject(BoardsService);
   private cardsService = inject(CardsService);
+
+  board: Board | null = null
+  showCardForm = false;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -65,8 +71,6 @@ export class BoardComponent implements OnInit{
       }
     })
   }
-
-  board: Board | null = null
 
   // columns: Column[] = [
   //   {
@@ -232,17 +236,38 @@ export class BoardComponent implements OnInit{
 
   private getBoard(id: string) {
     this.boardsService.getBoard(id)
-    .subscribe(board => {
-      this.board = board
-    })
+      .subscribe(board => {
+        this.board = board
+      })
   }
 
   private updateCard(card: Card, position: number, listId: string | number) {
     this.cardsService.update(card.id, { position, listId })
-    .subscribe((cardUpdated) => {
-      console.log(cardUpdated);
+      .subscribe((cardUpdated) => {
+        console.log(cardUpdated);
 
-    })
+      })
+  }
+
+  openFormCard(list: List) {
+    if (this.board?.lists) {
+      this.board.lists = this.board.lists.map(iteratorList => {
+        if (iteratorList.id === list.id) {
+          return {
+            ...iteratorList,
+            showCardForm: true,
+          }
+        }
+        return {
+          ...iteratorList,
+          showCardForm: false
+        }
+      })
+    }
+  }
+
+  closeFormCard(list: List) {
+    list.showCardForm = !list.showCardForm
   }
 
 

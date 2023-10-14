@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+    import { Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   CdkDragDrop, moveItemInArray,
@@ -61,7 +62,10 @@ export class BoardComponent implements OnInit {
   private cardsService = inject(CardsService);
 
   board: Board | null = null
-  showCardForm = false;
+  inputCard = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [Validators.required]
+  });
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -270,5 +274,9 @@ export class BoardComponent implements OnInit {
     list.showCardForm = !list.showCardForm
   }
 
+  createCard() {
+    const title = this.inputCard.value;
+    console.log(title);
+  }
 
 }

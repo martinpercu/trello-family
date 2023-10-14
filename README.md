@@ -624,6 +624,15 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - Is almost. To avoid left more than 2 formCard open the method openFormCard() must check if other list are open and close. So with an array with map in this method will resolve this.
 
 
+## New card Form
+- In the boards.module.ts "import { ReactiveFormsModule } from '@angular/forms';" and add it.
+- In the board.component.ts "import { Validators, FormControl } from '@angular/forms';"
+- REMEMBER keep the modularization ! ! ! ! !
+- In the board.component.ts add an inputCard state as a "new FormControl"
+- Create both methods createCard() and closeFormCard().
+- In the board.component.html add the new input.
+
+
 
 
 

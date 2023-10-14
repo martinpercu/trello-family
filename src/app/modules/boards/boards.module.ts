@@ -6,6 +6,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from '@shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
@@ -25,7 +26,8 @@ import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.compon
     DragDropModule,
     CdkAccordionModule,
     DialogModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ]
 })
 export class BoardsModule { }

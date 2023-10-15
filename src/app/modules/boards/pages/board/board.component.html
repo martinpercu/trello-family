@@ -40,7 +40,7 @@
           <div class="w-full" *ngIf="list.showCardForm">
             <textarea [formControl]="inputCard" class="w-full"></textarea>
             <div class="flex space-x-2 justify-between">
-              <app-btn color="success" (click)="createCard()">Create Card</app-btn>
+              <app-btn color="success" (click)="createCard(list)">Create Card</app-btn>
               <app-btn color="gray" (click)="closeFormCard(list)">Close</app-btn>
               <!-- <app-btn color="danger" (click)="closeFormCard(list)">close new Card</app-btn> -->
             </div>

@@ -271,12 +271,26 @@ export class BoardComponent implements OnInit {
   }
 
   closeFormCard(list: List) {
+    this.inputCard.setValue(''); //this clean the input to show an empty form in other places.
     list.showCardForm = !list.showCardForm
   }
 
-  createCard() {
+  createCard(list: List) {
     const title = this.inputCard.value;
     console.log(title);
+    if (this.board) {
+      this.cardsService.create({
+        title,
+        listId: list.id,
+        boardId: this.board.id,
+        position: this.boardsService.getPositionOfNewCard(list.cards),
+      }).subscribe(card => {
+        list.cards.push(card);
+        this.inputCard.setValue('');
+        list.showCardForm = !list.showCardForm;
+      })
+    }
+
   }
 
 }

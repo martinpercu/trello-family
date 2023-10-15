@@ -64,4 +64,16 @@ export class BoardsService {
     }
     return 0; // is important to return a number!!!!! Because the position is number so in the update the typing must be a number.
   }
+
+
+  getPositionOfNewCard(cards: Card[]) {
+    if (cards.length === 0) { // this means card is empty (when is a new card)
+      console.log('Is New Card');
+      return this.bufferSpace;
+    }
+    const lastIndex = cards.length - 1;
+    const theLastCardPosition = cards[lastIndex].position;
+    return theLastCardPosition + this.bufferSpace;
+  }
+
 }

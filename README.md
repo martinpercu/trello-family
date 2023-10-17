@@ -646,6 +646,9 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - In boards.service (where we have the getPosition()) create a new new method getPositionOfNewCard(). This will is similar to get position but remember is for the new cards. Is important to remember this because now the card will be first if (cards.length === 0). and theLastCardPosition is the card[lastIndex].
 
 
+## New list UI
+- In board.component.html add an input like the input for cards already in same html.
+- In board.component.ts create inputFormList to get the value (will be the title) 
 
 
 

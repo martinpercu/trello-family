@@ -650,6 +650,15 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - In board.component.html add an input like the input for cards already in same html.
 - In board.component.ts create inputFormList to get the value (will be the title) 
 
+## New list connection api
+- Create a new list.service ... copy the cards.services is almost the same. 
+- In list.models create a the dto for the list. CreateListDto (again is almos the same as the cards models.)
+- In board.component.ts implement the addNewList() connectino to API.
+- In board.service create a method to get the position for the list. (Is the same as the getPositionOfNewCard()) I will make a new one and then comment both and create one combine list[] and card[]. Just to see how to use it.<br>
+===> getPositionOfNewElement(elements: Card[] | List[]) 
+- In board.component.html REMEMBER change the getPositionOfNewCard() for getPositionOfNewElement().
+- In board.component.ts in addNewList in subscribe shop list form and clean input value.
+- VERY IMPORTANT in addNewList in subscribe the push must have not only a the new list but also an empty card list. Because to be able to use the "drag and drop" this new list need a "card list". Otherwise we must to reload the page to be able to drag and drop ;)
 
 
 

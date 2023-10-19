@@ -660,6 +660,12 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - In board.component.ts in addNewList in subscribe shop list form and clean input value.
 - VERY IMPORTANT in addNewList in subscribe the push must have not only a the new list but also an empty card list. Because to be able to use the "drag and drop" this new list need a "card list". Otherwise we must to reload the page to be able to drag and drop ;)
 
+## dynamic Background
+- In board.component.html we find in first lind the class for the background.
+- In colors.model we will create a new cons"BACKGROUND". Is almos the same as "ALLCOLORS" but changing a little bit the "intensity in tailwind scales". ===< 500 in this case.
+- In board.component.ts we create a method to get the color for background "get colors()"
+- Now in html [ngClass] to assign the backgroundColor.
+
 
 
 

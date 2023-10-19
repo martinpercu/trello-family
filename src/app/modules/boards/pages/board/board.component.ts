@@ -16,6 +16,7 @@ import { BoardsService } from '@services/boards.service';
 import { CardsService } from '@services/cards.service';
 import { ListsService } from '@services/lists.service';
 import { List } from '@models/list.model';
+import { BACKGROUNDS } from '@models/colors.model';
 
 
 @Component({
@@ -74,6 +75,7 @@ export class BoardComponent implements OnInit {
   });
 
   showListForm = false;
+  colorBackgrounds = BACKGROUNDS;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -312,6 +314,14 @@ export class BoardComponent implements OnInit {
       })
     }
 
+  }
+
+  get backgroundColor() {
+    if (this.board) {
+      const classes = this.colorBackgrounds[this.board.backgroundColor];
+      return classes ? classes : {};
+    }
+    return {};
   }
 
 }

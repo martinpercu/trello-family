@@ -12,6 +12,9 @@ import { List } from '@models/list.model';
 import { checkToken } from '@interceptors/token.interceptor';
 import { Allcolors } from '@models/colors.model';
 
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -23,12 +26,18 @@ export class BoardsService {
 
   bufferSpace = 65535
 
+  backgroundColor$ = new BehaviorSubject<Allcolors>('sky');
+
   private http = inject(HttpClient);
 
   getBoard(id: Board['id'])  {
     return this.http.get<Board>(`${this.apiUrl}/api/v1/boards/${id}`, {
       context: checkToken()
-    });
+    })
+    // .pipe(
+    //   tap(board => this.setBackgroundColor(board.backgroundColor))
+    // )
+    ;
   }
 
   createBoard(title: string, backgroundColor: Allcolors) {
@@ -95,6 +104,10 @@ export class BoardsService {
     const lastIndex = elements.length - 1;
     const theLastCardPosition = elements[lastIndex].position;
     return theLastCardPosition + this.bufferSpace;
+  }
+
+  setBackgroundColor(color: Allcolors) {
+    this.backgroundColor$.next(color);
   }
 
 }

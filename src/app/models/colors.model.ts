@@ -106,5 +106,43 @@ export const BACKGROUNDS: ObjALLCOLORS =  {
   light: {
     'bg-primary-500': true,
   }
+}
 
+  export const NAVBAR_BACKGROUNDS: ObjALLCOLORS =  {
+    sky: {
+      'bg-sky-600': true,
+    },
+    green: {
+      'bg-green-600': true,
+    },
+    teal: {
+      'bg-teal-600': true,
+    },
+    fuchsia: {
+      'bg-fuchsia-600': true,
+    },
+    violet: {
+      'bg-violet-600': true,
+    },
+    lime: {
+      'bg-lime-600': true,
+    },
+    gray: {
+      'bg-gray-600': true,
+    },
+    yellow: {
+      'bg-yellow-600': true,
+    },
+    success: {
+      'bg-success-600': true,
+    },
+    primary: {
+      'bg-primary-600': true,
+    },
+    danger: {
+      'bg-red-600': true,
+    },
+    light: {
+      'bg-primary-600': true,
+    }
 }

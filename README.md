@@ -660,11 +660,28 @@ ng g c modules/layout/components/board-form --skip-tests --style=none
 - In board.component.ts in addNewList in subscribe shop list form and clean input value.
 - VERY IMPORTANT in addNewList in subscribe the push must have not only a the new list but also an empty card list. Because to be able to use the "drag and drop" this new list need a "card list". Otherwise we must to reload the page to be able to drag and drop ;)
 
-## dynamic Background
+## Dynamic Background
 - In board.component.html we find in first lind the class for the background.
 - In colors.model we will create a new cons"BACKGROUND". Is almos the same as "ALLCOLORS" but changing a little bit the "intensity in tailwind scales". ===< 500 in this case.
 - In board.component.ts we create a method to get the color for background "get colors()"
 - Now in html [ngClass] to assign the backgroundColor.
+
+## States for Background (state manager)
+- As we cannot connect the navbar with the boards with input output we cannot send the background info to navbar. So we will create an global state of background to use from the navbar.
+- So in boards.service we will manage this backgroundColor.
+- In boards.service "import { BehaviorSubject } from 'rxjs'". 
+- Then "backgroundColor$ = new BehaviorSubject<Allcolors>();"
+- Then a method setBackgroundColor() 
+- IMPORTANT in what moment we get the color and activate the setBackgrounColor. ===> in the board.component.ts in the private getBoard().!! BUT. There is also another place ===>. In the same boards.service int the getBoard(id: Board['id']). Here add a pipe to implement this. I will left commented the last one and use the one in the board.component.
+- In navbar.component.ts import the boards.service + in the constructor get the color (so each time we charge the navbar will get the color).
+- In color models create a new palette "NAVBAR_BACKGROUNDS" of colors just a little bit darker than 500. ===> in this case will be 600.
+- In navbar.component.html   add "navBarColors = NAVBAR_BACKGROUNDS" then "get colors()" to return the classes.
+- In navbar.component.html implement this clases for background
+- In navbar.component.html for replace the button also.
+- IMPORTANT when we getout from the board we need to return to the main bacgroun color for the navbar so we will implement that with the ngOnDestroy in the board.component.ts.
+
+
+
 
 
 

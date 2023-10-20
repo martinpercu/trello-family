@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
     import { Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -56,7 +56,7 @@ import { BACKGROUNDS } from '@models/colors.model';
       `
   ],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, OnDestroy  {
 
   private dialog = inject(Dialog);
   private route = inject(ActivatedRoute);
@@ -84,6 +84,10 @@ export class BoardComponent implements OnInit {
         this.getBoard(id)
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.boardsService.setBackgroundColor('sky');
   }
 
   // columns: Column[] = [
@@ -264,8 +268,9 @@ export class BoardComponent implements OnInit {
   private getBoard(id: string) {
     this.boardsService.getBoard(id)
       .subscribe(board => {
-        this.board = board
-      })
+        this.board = board;
+        this.boardsService.setBackgroundColor(this.board.backgroundColor);
+      });
   }
 
   private updateCard(card: Card, position: number, listId: string | number) {
